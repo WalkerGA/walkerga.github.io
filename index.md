@@ -7,7 +7,7 @@ nav_order: 1
 The goal of this challenge is to create a megadungeon over the course of a year. 
 
 
-*Schedule*
+## Schedule
 1. **Monday** - Room Descriptions
 2. **Tuesday** - Item Description. Anything the players will interact with.
 3. **Wednesday** - Room Descriptions
