@@ -12,6 +12,7 @@ nav_order: 1
 - **Entrance:** Two large, heavy solid marble doors.
 
 <img align="right" width=250px src="/img/1_2_5x7.png">
+
 # Monday - 1/2
 *Room Description*
 - Trapezoid shaped
