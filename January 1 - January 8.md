@@ -11,10 +11,9 @@ nav_order: 1
 - Within the cavern is an arrangement of two large stalactites and two large stalagmites, giving the appearance of a mouth with huge fangs.
 - **Entrance:** Two large, heavy solid marble doors.
 
-
+<img align="right" width=250px src="/img/1_2_5x7.png">
 # Monday - 1/2
 *Room Description*
-<img align="right" width=250px src="/img/1_2_5x7.png">
 - Trapezoid shaped
 - Two doors on each side, across from each other
 - Two pillars, next to the right one are a pile of bones 
