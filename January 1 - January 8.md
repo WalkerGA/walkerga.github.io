@@ -14,6 +14,7 @@ nav_order: 1
 
 # Monday - 1/2
 *Room Description*
+<img align="right" width=250px src="/img/1_2_5x7.png">
 - Trapezoid shaped
 - Two doors on each side, across from each other
 - Two pillars, next to the right one are a pile of bones 
