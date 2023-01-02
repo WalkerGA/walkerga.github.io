@@ -13,8 +13,11 @@ nav_order: 1
 
 
 # Monday - 1/2
-*Room 1*
+*Room Description*
 - Trapezoid shaped
 - Two doors on each side, across from each other
 - Two pillars, next to the right one are a pile of bones 
 - **Trap:** Already activated, a pressure plate on the floor activated poison gas from the pillar.
+
+# Tuesday - 1/3
+*Item*
