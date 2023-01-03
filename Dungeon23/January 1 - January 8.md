@@ -21,7 +21,9 @@ nav_order: 1
 - **Trap:** Already activated, a pressure plate on the floor activated poison gas from the pillar.
 
 # Tuesday - 1/3
-<img align="right width=250px src="/img/Dried Foxglove.jpg">
+
+<img align="right" width=250px src="/img/Dried Foxglove.jpg">
+                                                           
 *Item*
 ### Dried Foxglove leaves
 - Can be prepared in different ways for different results
