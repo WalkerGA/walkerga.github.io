@@ -11,7 +11,7 @@ nav_order: 1
 - Within the cavern is an arrangement of two large stalactites and two large stalagmites, giving the appearance of a mouth with huge fangs.
 - **Entrance:** Two large, heavy solid marble doors.
 
-<img align="right" width=250px src="/img/1_2_5x7.png">
+<img align="right" width=250px src="/img/1.2.png">
 
 # Monday - 1/2
 *Room Description*
@@ -21,4 +21,9 @@ nav_order: 1
 - **Trap:** Already activated, a pressure plate on the floor activated poison gas from the pillar.
 
 # Tuesday - 1/3
+<img align="right width=250px src="/img/Dried Foxglove.jpg">
 *Item*
+### Dried Foxglove leaves
+- Can be prepared in different ways for different results
+- **Poisonous.** If consumed raw, can cause nausua, hallucinations, and death. 
+- **Protective.** Create black dye and outline a protective barrier. Protects from malicious spirits and spells.
