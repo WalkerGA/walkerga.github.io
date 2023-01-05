@@ -41,3 +41,10 @@ nav_order: 1
 - Three bookshelves surround a small table 
 - **North Door** 
 - **South Door**
+
+# Thursday 1/5
+*Inhabitant Description*
+### Edwin One Arm
+- Veteran (Lvl. 3 Warrior)
+- **Spell:** Furry Pelt, thick hair grows from everywhere, -d2 damage
+- Sitting alone in Room 1.4, his longsword on the table.
