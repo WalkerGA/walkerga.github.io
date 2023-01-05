@@ -15,10 +15,10 @@ nav_order: 1
 
 # Monday - 1/2
 *Room Description*
-- Trapezoid shaped
-- Two doors on each side, across from each other
-- Two pillars, next to the right one are a pile of bones 
-- **Trap:** Already activated, a pressure plate on the floor activated poison gas from the pillar.
+- Four pillars in each corner of the room
+- On the north wall is an altar
+- **Stairs** on the western wall leading up
+- **Door** on the eastern wall. Closed.
 
 # Tuesday - 1/3
 
@@ -29,3 +29,15 @@ nav_order: 1
 - Can be prepared in different ways for different results
 - **Poisonous.** If consumed raw, can cause nausua, hallucinations, and death. 
 - **Protective.** Create black dye and outline a protective barrier. Protects from malicious spirits and spells.
+
+
+
+# Wednesday 1/4 
+
+<img align="right" width=250px src="/img/1.4.png">
+
+*Room Description*
+- Small cramped room
+- Three bookshelves surround a small table 
+- **North Door** 
+- **South Door**
