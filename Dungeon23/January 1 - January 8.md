@@ -5,6 +5,8 @@ parent: Megadungeon
 nav_order: 1
 ---
 
+<img align="center" src="/img/Cultist_Lair.png">
+
 # Sunday - 1/1
 *Entrance*
 - The cavern entrance is hidden behind overgrown vines and vegetation.
