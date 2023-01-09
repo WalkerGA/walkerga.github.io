@@ -5,7 +5,7 @@ parent: Megadungeon
 nav_order: 1
 ---
 
-<img align="center" src="/img/Cultist_Lair.png">
+<img align="center" src="/img/cultist_lair.png">
 
 # Sunday - 1/1
 *Entrance*
