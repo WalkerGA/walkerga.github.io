@@ -16,7 +16,7 @@ nav_order: 1
     <a href="#3" title="" class="3"></a>
     <a href="#4" title="" class="5"></a>
     <a href="#6" title="" class="6"></a>
-    <img src="/img/cultist_lair.svg" alt="">
+    <img src="/img/cultist_lair.png" alt="">
 </div>
 
 # Sunday - 1/1
