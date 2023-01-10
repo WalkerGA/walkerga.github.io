@@ -34,11 +34,13 @@ nav_order: 1
 
 
 <h1 id="1">Room 1</h1>
-**
--
+*hot, humid*
+- Wet, slippery stairs
+- Half of the room is flooded
+- **West Exit:** Iron Door. Water seems to be flowing in from underneath. Opens outwards *Hard to open, halls are flooded on other side.*
 
 <h1 id="2">Room 2</h1>
-**
+*flooded*
 -
 
 <h1 id="3">Room 3</h1>
