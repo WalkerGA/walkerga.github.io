@@ -20,16 +20,6 @@ nav_order: 1
     }
 </style>
 
-<script>
-    $(".goblins").mouseover(function() {
-    $(this).children(".description").show();
-}).mouseout(function() {
-    $(this).children(".description").hide();
-});
-</script>
-
-<div class="description">GOBLINS ARE NASTY</div>
-
 
 
 
@@ -61,13 +51,15 @@ nav_order: 1
 
 <h1 id="3">3.Lounge Room</h1>
 *Dim, humid, smokey*
-- 3 grimey and stained ornate couches are randomly placed within the room
-- 4 <a class="description">Goblins</a> are lounging, some smoking misshapen cigars
-- 
+- 3 grimey and stained ornate couches are randomly placed within the room, beside each couch is a small table
+- 4 Goblins are lounging, some smoking misshapen cigars
+- Various broken items litter the room
 
-<h1 id="4">Room 4</h1>
-**
--
+<h1 id="4">Sleeping Quarters</h1>
+- One extremely stained and smelly king sized, ornate bed in the middle of the room
+- 2 large paintings (100gp each) leaning against the wall
+- 2 Goblin Guards lazily stand in front of a pile of gold
+- **Treasure:** 200gp, Pouch containing Dust of Ur
 
 <h1 id="5">Room 5</h1>
 **
