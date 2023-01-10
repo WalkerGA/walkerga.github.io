@@ -12,7 +12,23 @@ nav_order: 1
     #map a:hover { border-bottom: 0; background: transparent; }
 
     html { scroll-behavior: smooth; }
+    .description{
+        position: absolute;
+        border: 1px solid 
+        width: auto;
+        height: auto;
+    }
 </style>
+
+<script>
+    $(".goblins").mouseover(function() {
+    $(this).children(".description").show();
+}).mouseout(function() {
+    $(this).children(".description").hide();
+});
+</script>
+
+<div class="description">GOBLINS ARE NASTY</div>
 
 
 
@@ -43,9 +59,11 @@ nav_order: 1
 *flooded*
 -
 
-<h1 id="3">Room 3</h1>
-**
--
+<h1 id="3">3.Lounge Room</h1>
+*Dim, humid, smokey*
+- 3 grimey and stained ornate couches are randomly placed within the room
+- 4 <a class="description">Goblins</a> are lounging, some smoking misshapen cigars
+- 
 
 <h1 id="4">Room 4</h1>
 **
