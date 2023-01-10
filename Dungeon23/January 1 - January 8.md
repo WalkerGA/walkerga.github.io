@@ -6,9 +6,9 @@ nav_order: 1
 ---
 
 <style>
-    #map { position: fixed; width: 100%; margin: 0 auto; }
+    #map { position: relative; width: 100%; margin: 0 auto; }
     #map img { max-width: 100%; height: auto; display: block; }
-    #map a { position: absolute; z-index: 2; }
+    #map a { position: sticky; z-index: 2; }
     #map a:hover { border-bottom: 0; background: transparent; }
 
     html { scroll-behavior: smooth; }
