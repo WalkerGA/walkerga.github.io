@@ -11,7 +11,7 @@ nav_order: 1
 
 
 <div id="map">
-    <a href="#1" title="Room 1" class="1"></a>
+    <a href="#1" title="1" style="position: absolute; left: 40.93%; top: 36.05%; width: 14.22%; height: 16.91%; z-index: 2;"></a>
     <a href="#2" title="" class="2"></a>
     <a href="#3" title="" class="3"></a>
     <a href="#4" title="" class="5"></a>
