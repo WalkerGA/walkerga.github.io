@@ -29,6 +29,7 @@ nav_order: 1
 
 <h1> Monday - 1/2 </h1>
 <a id="#1"></a>
+
 *Room Description*
 - Four pillars in each corner of the room
 - On the north wall is an altar
