@@ -5,7 +5,7 @@ parent: Megadungeon
 nav_order: 1
 ---
 
-<link rel="stylesheet" type="text/css" href="/css/map.css"></link>
+<link rel="stylesheet" type="text/css" href="/css/map.css">
 
 
 
