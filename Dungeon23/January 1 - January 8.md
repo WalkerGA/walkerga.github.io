@@ -35,7 +35,7 @@ nav_order: 1
 <img align="right" width=250px src="/img/1.2.png">
 
 <h1> Monday - 1/2 </h1>
-<a id="#1"></a>
+<a id="1"></a>
 
 *Room Description*
 - Four pillars in each corner of the room
