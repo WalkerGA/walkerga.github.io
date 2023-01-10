@@ -4,15 +4,9 @@ title: January 1 - January 8
 parent: Megadungeon
 nav_order: 1
 ---
+<link rel="stylesheet" href"map.css"> 
 
-<style>
-    #map { position: relative; width: 100%; margin: 0 auto; }
-    #map img { max-width: 100%; height: auto; display: block; }
-    #map a { position: absolute; z-index: 2; }
-    #map a:hover { border-bottom:0; background: transparent; }
-    
-    .1 {left: 41.64%; top: 38.97%; width: 12.28%; height: 11.26%;}
-</style>
+
 
 <div id="map">
     <a href="#1" title="Room 1" class="1"></a>
@@ -22,6 +16,7 @@ nav_order: 1
     <a href="#6" title="" class="6"></a>
     <img src="/img/cultist_lair.png" alt="">
 </div>
+
 # Sunday - 1/1
 *Entrance*
 - The cavern entrance is hidden behind overgrown vines and vegetation.
@@ -30,7 +25,7 @@ nav_order: 1
 
 <img align="right" width=250px src="/img/1.2.png">
 
-<h1 id=#1> Monday - 1/2</h1>
+<h1 id="#1"> Monday - 1/2 </h1>
 *Room Description*
 - Four pillars in each corner of the room
 - On the north wall is an altar
