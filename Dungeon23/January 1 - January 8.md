@@ -28,7 +28,7 @@ nav_order: 1
         padding: 3px;
         margin-left: 10px;
         margin-top: 5px;
-        width: 250px;
+        width: auto;
         border: 1px solid black;
         background-color: #777;
         color: white;
@@ -78,9 +78,7 @@ nav_order: 1
 <h1 id="3">3. Lounge Room</h1>
 *dim, humid, smokey*
 - 3 grimey and stained ornate couches are randomly placed within the room, beside each couch is a small table
-- 4 <a onmouseover="nhpup.popup('**HD:** 1;  **AD:** 12;  **ML:** 5;  **SP:** 30 <br>
-**ATT:** 1, Club 1d6, Pillowcase of Rocks 2d6 <br>
-*Goblins get advantage on sneaking in the dark*');" href="/bestiary/goblin.html" target="_blank">Goblins </a> are lounging, some smoking misshapen cigars
+- 4 <a onmouseover="nhpup.popup('HD: 1; AD: 12; ML: 5; SP: 30 <br> ATT: 1, Club 1d6, Pillowcase of Rocks 2d6 <br> Goblins get advantage on sneaking in the dark');" href="/bestiary/goblin.html" target="_blank">Goblins </a> are lounging, some smoking misshapen cigars
 - Various broken items litter the room
 
 <h1 id="4">4. Sleeping Quarters</h1>
