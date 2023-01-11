@@ -41,7 +41,7 @@ nav_order: 1
 - The cavern entrance is hidden behind overgrown vines and vegetation.
 - Within the cavern is an arrangement of two large stalactites and two large stalagmites, giving the appearance of a mouth with huge fangs.
 - **Entrance:** Two large, heavy solid marble doors.
-<p id="tooltip1"><a href="introduction.php">Introduction<span>Introduction to HTML and CSS: tooltip with extra text</span></a></p>
+
 
 
 <h1 id="1">Room 1</h1>
@@ -57,7 +57,7 @@ nav_order: 1
 <h1 id="3">3.Lounge Room</h1>
 *Dim, humid, smokey*
 - 3 grimey and stained ornate couches are randomly placed within the room, beside each couch is a small table
-- 4 Goblins are lounging, some smoking misshapen cigars
+- 4 <p id="tooltip1">Goblins<span>Introduction to HTML and CSS: tooltip with extra text</span></p> are lounging, some smoking misshapen cigars
 - Various broken items litter the room
 
 <h1 id="4">Sleeping Quarters</h1>
