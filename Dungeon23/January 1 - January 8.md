@@ -70,15 +70,17 @@ nav_order: 1
 
 
 
-<h1 id="1">Room 1</h1>
+<h1 id="1">1. Entrance Hall</h1>
 *hot, humid*
 - Wet, slippery stairs
 - Half of the room is flooded
-- **West Exit:** Iron Door. Water seems to be flowing in from underneath. Opens outwards *Hard to open, halls are flooded on other side.*
+- **West Exit:** Iron Door. Water seems to be flowing in from underneath. Opens outwards: *Hard to open, halls are flooded on other side.*
 
 <h1 id="2">Room 2</h1>
 *flooded*
--
+- The entire room is flooded, 3 feet high water
+- Above the water is a raised platform with a lecturn [Holding a prayer book]
+- **Prayer Book.** **Wisdom of the Ancients, as Gathered by Goergh the Godless.** The prayers contained in this codex give the reader 5% chance per level of divine intervention. Doesn't specify which deity will respond.
 
 <h1 id="3">3.Lounge Room</h1>
 *Dim, humid, smokey*
@@ -86,11 +88,11 @@ nav_order: 1
 - 4 Goblins are lounging, some smoking misshapen cigars
 - Various broken items litter the room
 
-<h1 id="4">Sleeping Quarters</h1>
+<h1 id="4">4. Sleeping Quarters</h1>
 - One extremely stained and smelly king sized, ornate bed in the middle of the room
 - 2 large paintings (100gp each) leaning against the wall
 - 2 <a onmouseover="nhpup.popup('Goblin Guard');" href="/bestiary/goblinguard.html" target="_blank">Goblin Guards</a> lazily stand in front of a pile of gold. 
-- **Treasure:** 200gp, <a href='#' id='modal'>Pouch containing Dust of Ur</a>
+- **Treasure:** 200gp,
 
 <h1 id="5">Room 5</h1>
 **
