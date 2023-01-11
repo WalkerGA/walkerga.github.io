@@ -19,9 +19,7 @@ nav_order: 1
         height: auto;
     }
 
-    #tooltip1 { position: relative; }
-    #tooltip1 a span { display: none; color: #FFFFFF; }
-    #tooltip1 a:hover span { display: block; position: absolute; width: 200px; background: #aaa url(images/horses200x50.jpg); height: 50px; left: 100px; top: -10px; color: #FFFFFF; padding: 0 5px; }
+     
 </style>
 
 
@@ -35,6 +33,10 @@ nav_order: 1
     <a href="#5" title="5" style="position: absolute; left: 59.65%; top: 58.67%; width: 12.64%; height: 23.6%; z-index: 2;"></a>
     <img src="/img/cultist_lair.png" alt="">
 </div>
+
+<p>"You know the "
+<a href="spells.html#light_phb" onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this)" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)" data-vet-page="spells.html" data-vet-source="PHB" data-vet-hash="light_phb" ontouchstart="Renderer.hover.handleTouchStart(event, this)">light</a>
+" cantrip."</p>
 
 # Entrance
 **
@@ -57,7 +59,7 @@ nav_order: 1
 <h1 id="3">3.Lounge Room</h1>
 *Dim, humid, smokey*
 - 3 grimey and stained ornate couches are randomly placed within the room, beside each couch is a small table
-- 4 <p id="tooltip1">Goblins<span>Introduction to HTML and CSS: tooltip with extra text</span></p> are lounging, some smoking misshapen cigars
+- 4 Goblins are lounging, some smoking misshapen cigars
 - Various broken items litter the room
 
 <h1 id="4">Sleeping Quarters</h1>
