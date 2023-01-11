@@ -4,6 +4,10 @@ title: January 1 - January 8
 parent: Megadungeon
 nav_order: 1
 ---
+<head>
+<script src="jquery-3.6.1.min.js"></script>
+<script type="text/javascript" src="/nhpup_1.1.js"></script>
+</head>
 
 <style>
     #map { position: relative; width: 100%; margin: 0 auto; }
@@ -18,6 +22,18 @@ nav_order: 1
         width: auto;
         height: auto;
     }
+    #pup {
+        position:absolute;
+        z-index:200; /* aaaalways on top*/
+        padding: 3px;
+        margin-left: 10px;
+        margin-top: 5px;
+        width: 250px;
+        border: 1px solid black;
+        background-color: #777;
+        color: white;
+        font-size: 0.95em;
+}
 
      
 </style>
@@ -34,9 +50,7 @@ nav_order: 1
     <img src="/img/cultist_lair.png" alt="">
 </div>
 
-<p>"You know the "
-<a href="Worldbuilding.md" onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this)" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)" data-vet-page="Worldbuilding.md"  ontouchstart="Renderer.hover.handleTouchStart(event, this)">light</a>
-" cantrip."</p>
+
 
 # Entrance
 **
@@ -65,7 +79,7 @@ nav_order: 1
 <h1 id="4">Sleeping Quarters</h1>
 - One extremely stained and smelly king sized, ornate bed in the middle of the room
 - 2 large paintings (100gp each) leaning against the wall
-- 2 Goblin Guards lazily stand in front of a pile of gold
+- <a onmouseover="nhpup.popup('Lorem ipsum dolor sit ...');"> 2 Goblin Guards lazily stand in front of a pile of gold. </a>
 - **Treasure:** 200gp, Pouch containing Dust of Ur
 
 <h1 id="5">Room 5</h1>
