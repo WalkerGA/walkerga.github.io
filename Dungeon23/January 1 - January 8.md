@@ -35,7 +35,7 @@ nav_order: 1
 </div>
 
 <p>"You know the "
-<a href="spells.html#light_phb" onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this)" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)" data-vet-page="spells.html" data-vet-source="PHB" data-vet-hash="light_phb" ontouchstart="Renderer.hover.handleTouchStart(event, this)">light</a>
+<a href="spells.html#light_phb" onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this)" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)" data-vet-page="Worldbuilding.md"  ontouchstart="Renderer.hover.handleTouchStart(event, this)">light</a>
 " cantrip."</p>
 
 # Entrance
