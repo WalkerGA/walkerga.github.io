@@ -13,4 +13,4 @@ I have decided to tweak the challenge to fit into something more appealing for m
 - By the end of each week, have completed a dungeon, town, faction, etc.
 
 
-<img align: right; src="img/dice.svg" >
+<img src="img/dice.svg" >
