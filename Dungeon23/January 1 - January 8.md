@@ -10,10 +10,9 @@ nav_order: 1
 <script type="text/javascript" src="/js/picomodal.js"></script>
 <script>
     var modal = picoModal("Ah, the pitter patter of tiny feet in huge combat boots.");
-
-document.getElementById("modal").addEventListener("click", function(){
-    modal.show();    
-});
+    document.getElementById("modal").addEventListener("click", function(){
+      modal.show();
+  });
 </script>
 </head>
 
