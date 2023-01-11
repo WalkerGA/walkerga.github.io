@@ -82,7 +82,7 @@ nav_order: 1
 <h1 id="4">Sleeping Quarters</h1>
 - One extremely stained and smelly king sized, ornate bed in the middle of the room
 - 2 large paintings (100gp each) leaning against the wall
-- 2 <a onmouseover="nhpup.popup('Goblin Guard');" href="/bestiary/goblinguard.md" target="_blank">Goblin Guards</a> lazily stand in front of a pile of gold. 
+- 2 <a onmouseover="nhpup.popup('Goblin Guard');" href="/bestiary/goblinguard.html" target="_blank">Goblin Guards</a> lazily stand in front of a pile of gold. 
 - **Treasure:** 200gp, Pouch containing Dust of Ur
 
 <h1 id="5">Room 5</h1>
