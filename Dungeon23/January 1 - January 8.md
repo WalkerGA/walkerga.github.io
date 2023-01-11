@@ -18,6 +18,10 @@ nav_order: 1
         width: auto;
         height: auto;
     }
+
+    #tooltip1 { position: relative; }
+    #tooltip1 a span { display: none; color: #FFFFFF; }
+    #tooltip1 a:hover span { display: block; position: absolute; width: 200px; background: #aaa url(images/horses200x50.jpg); height: 50px; left: 100px; top: -10px; color: #FFFFFF; padding: 0 5px; }
 </style>
 
 
@@ -37,6 +41,7 @@ nav_order: 1
 - The cavern entrance is hidden behind overgrown vines and vegetation.
 - Within the cavern is an arrangement of two large stalactites and two large stalagmites, giving the appearance of a mouth with huge fangs.
 - **Entrance:** Two large, heavy solid marble doors.
+<p id="tooltip1"><a href="introduction.php">Introduction<span>Introduction to HTML and CSS: tooltip with extra text</span></a></p>
 
 
 <h1 id="1">Room 1</h1>
