@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Worldbuilding
+title: The World
 nav_order: 3
 has_children: true
 ---

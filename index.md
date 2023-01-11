@@ -4,14 +4,12 @@ layout: home
 nav_order: 1
 ---
 
-The goal of this challenge is to create a megadungeon over the course of a year. 
+The Dungeon23 challenge was started by a [twitter post](https://twitter.com/seanmccoy/status/1599809865836363782) by Sean McCoy.
+> Megadungeon for 2023. 12 levels. 365 rooms. One room a day. Keep it all in a journal.
+
+I have decided to tweak the challenge to fit into something more appealing for me.
+
+### Goal
+- By the end of each week, have completed a dungeon, town, faction, etc.
 
 
-## Schedule
-1. **Monday** - Room Descriptions
-2. **Tuesday** - Item Description. Anything the players will interact with.
-3. **Wednesday** - Room Descriptions
-4. **Thursday** - Inhabitant Description. Flesh out an NPC from a ealier room.
-5. **Friday** - Room Description
-6. **Saturday** - Faction Detail. Create either a new faction or flesh out an existing one. Create connections between them.
-7. **Sunday** - Rumor

@@ -1,6 +1,6 @@
 ---
 layout: default
 title: January 9 - January 15
-parent: Megadungeon
+parent: Dungeons
 nav_order: 2
 ---

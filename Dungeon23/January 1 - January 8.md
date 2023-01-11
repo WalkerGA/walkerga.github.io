@@ -1,7 +1,7 @@
 ---
 layout: default
 title: January 1 - January 8
-parent: Megadungeon
+parent: Dungeons
 nav_order: 1
 ---
 <head>
