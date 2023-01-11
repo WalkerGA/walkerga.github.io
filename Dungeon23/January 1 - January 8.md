@@ -69,16 +69,16 @@ nav_order: 1
 - Half of the room is flooded
 - **West Exit:** Iron Door. Water seems to be flowing in from underneath. Opens outwards: *Hard to open, halls are flooded on other side.*
 
-<h1 id="2">Room 2</h1>
+<h1 id="2">2. Forgotten Prayer Room</h1>
 *flooded*
 - The entire room is flooded, 3 feet high water
 - Above the water is a raised platform with a lecturn [Holding a prayer book]
 - **Prayer Book.** *Wisdom of the Ancients, as Gathered by Goergh the Godless.* The prayers contained in this codex give the reader 5% chance per level of divine intervention. Doesn't specify which deity will respond.
 
-<h1 id="3">3.Lounge Room</h1>
-*Dim, humid, smokey*
+<h1 id="3">3. Lounge Room</h1>
+*dim, humid, smokey*
 - 3 grimey and stained ornate couches are randomly placed within the room, beside each couch is a small table
-- 4 Goblins are lounging, some smoking misshapen cigars
+- 4 <a onmouseover="nhpup.popup('Goblin');" href="/bestiary/goblin.html" target="_blank">Goblins </a> are lounging, some smoking misshapen cigars
 - Various broken items litter the room
 
 <h1 id="4">4. Sleeping Quarters</h1>
@@ -87,9 +87,11 @@ nav_order: 1
 - 2 <a onmouseover="nhpup.popup('Goblin Guard');" href="/bestiary/goblinguard.html" target="_blank">Goblin Guards</a> lazily stand in front of a pile of gold. 
 - **Treasure:** 200gp,
 
-<h1 id="5">Room 5</h1>
-**
--
+<h1 id="5">5. Wash Room</h1>
+*flooded*
+- The majority of this room is filled with murkey, green water
+- 1 <a onmouseover="nhpup.popup('Goblin');" href="/bestiary/goblin.html" target="_blank">Goblin </a>is floating in the water, relaxing
+- Leads into a mostly dry hallway
 
 
 
