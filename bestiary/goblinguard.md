@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Goblin Guard
-nav_order: 3
-has_children: false
+parent: Bestiary
+nav_order: 1
+
 ---
 
 TESTING
