@@ -7,13 +7,6 @@ nav_order: 1
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/nhpup_1.1.js"></script>
-<script type="text/javascript" src="/js/picomodal.js"></script>
-<script>
-    var modal = picoModal("Ah, the pitter patter of tiny feet in huge combat boots.");
-    document.getElementById("modal").addEventListener("click", function(){
-      modal.show();
-  });
-</script>
 </head>
 
 <style>
@@ -80,7 +73,7 @@ nav_order: 1
 *flooded*
 - The entire room is flooded, 3 feet high water
 - Above the water is a raised platform with a lecturn [Holding a prayer book]
-- **Prayer Book.** **Wisdom of the Ancients, as Gathered by Goergh the Godless.** The prayers contained in this codex give the reader 5% chance per level of divine intervention. Doesn't specify which deity will respond.
+- **Prayer Book.** *Wisdom of the Ancients, as Gathered by Goergh the Godless.* The prayers contained in this codex give the reader 5% chance per level of divine intervention. Doesn't specify which deity will respond.
 
 <h1 id="3">3.Lounge Room</h1>
 *Dim, humid, smokey*
