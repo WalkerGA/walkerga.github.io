@@ -39,7 +39,7 @@ nav_order: 1
 </style>
 
 <h1>Backstory</h1>
-<p>This old disued dungeon </p>
+<p>The dungeon is old and disused, it's original function was forgotten years ago. Recently, a group of goblins has made it into their own personal retreat. They've furnished it with ornate couchs and miscellaneous goods stolen off transport wagons. </p>
 
 
 
@@ -82,8 +82,7 @@ nav_order: 1
 <h1 id="4">Sleeping Quarters</h1>
 - One extremely stained and smelly king sized, ornate bed in the middle of the room
 - 2 large paintings (100gp each) leaning against the wall
-- <a onmouseover="nhpup1_1.popup('TEST');" href=""> 2 Goblin Guards </a>lazily stand in front of a pile of gold. 
-<a onmouseover="nhpup.popup('TEST 2');" href="Worldbuilding.md">2 Goblin Guards</a>
+- 2 <a onmouseover="nhpup.popup('TEST 2');" href="Worldbuilding.md">Goblin Guards</a>lazily stand in front of a pile of gold. 
 - **Treasure:** 200gp, Pouch containing Dust of Ur
 
 <h1 id="5">Room 5</h1>
