@@ -55,11 +55,17 @@ nav_order: 1
 
 
 
-# Entrance
-**
-- The cavern entrance is hidden behind overgrown vines and vegetation.
-- Within the cavern is an arrangement of two large stalactites and two large stalagmites, giving the appearance of a mouth with huge fangs.
-- **Entrance:** Two large, heavy solid marble doors.
+<h1>Main Entrance</h1>
+*Enters into Room 3*
+- A small cave entrance
+- Small wooden door, rotted
+- Outside are the remnants of two small wagons
+
+<h1>Secondary Entrance</h1>
+*Enters into Room 1*
+- Just beyond the broken wagons is a small stream
+- Next to the stream, in the bank is a trap door 
+
 
 
 
@@ -92,22 +98,3 @@ nav_order: 1
 - The majority of this room is filled with murkey, green water
 - 1 <a onmouseover="nhpup.popup('Goblin');" href="/bestiary/goblin.html" target="_blank">Goblin </a>is floating in the water, relaxing
 - Leads into a mostly dry hallway
-
-
-
-# Tuesday - 1/3
-
-<img align="right" width=250px src="/img/Dried Foxglove.jpg">
-                                                           
-*Item*
-### Dried Foxglove leaves
-- Can be prepared in different ways for different results
-- **Poisonous.** If consumed raw, can cause nausua, hallucinations, and death. 
-- **Protective.** Create black dye and outline a protective barrier. Protects from malicious spirits and spells.
-
-# Thursday 1/5
-*Inhabitant Description*
-### Edwin One Arm
-- Veteran (Lvl. 3 Warrior)
-- **Spell:** Furry Pelt, thick hair grows from everywhere, -d2 damage
-- Sitting alone in Room 1.4, his longsword on the table.
