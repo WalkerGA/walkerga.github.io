@@ -1,7 +1,7 @@
 ---
 layout: default
 title: January 1 - January 8
-parent: Dungeons
+parent: Locations
 nav_order: 1
 ---
 <head>
