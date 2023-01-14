@@ -4,7 +4,7 @@ title: January 9 - January 15
 parent: Locations
 nav_order: 2
 ---
-<link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="/css/fonts/stylesheet.css" type="text/css" charset="utf-8" />
 
 
 <h1>Grimsby</h1>
