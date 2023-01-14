@@ -48,13 +48,13 @@
 }
 
 h1, h2 {
-    font-family: 'souvenirbold' Arial, sans-serif;
+    font-family: 'souvenirbold', sans-serif;
     font-weight:normal;
     font-style:normal;
 }
 
 h3, h4 {
-    font-family:'souvenir' Arial, sans-serif;
+    font-family:'souvenir', sans-serif;
     font-weight: normal;
     font-style: normal;
 }
