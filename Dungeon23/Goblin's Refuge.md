@@ -1,9 +1,12 @@
 ---
 layout: default
-title: January 1 - January 8
+title: Goblin's Refuge
 parent: Locations
 nav_order: 1
 ---
+
+January 1 - January 8
+
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/nhpup_1.1.js"></script>
