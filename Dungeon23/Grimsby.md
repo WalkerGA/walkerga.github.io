@@ -1,10 +1,12 @@
 ---
 layout: default
-title: January 9 - January 15
+title: Grimsby
 parent: Locations
 nav_order: 2
 ---
 <link rel="stylesheet" href="/css/fonts/stylesheet.css" type="text/css" charset="utf-8" />
+
+January 9 - January 15
 
 
 <h1>Grimsby</h1>
