@@ -16,4 +16,8 @@ January 9 - January 15
 The front porch of this modest house has been converted into a small alchemy shop.
 
 ---
+| Item | Cost | Type |
+| -----|------|----- |
+| Header | Title |
+| Paragraph | Text |
 
