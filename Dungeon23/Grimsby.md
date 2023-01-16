@@ -16,8 +16,5 @@ January 9 - January 15
 The front porch of this modest house has been converted into a small alchemy shop.
 
 ---
-| Item | Cost | Type |
-| -----|------|----- |
-| Header | Title |
-| Paragraph | Text |
+<table><thead><tr><th>Item</th><th>Cost</th><th>Type</th></tr></thead><tbody><tr><td>Dried Foxglove</td><td>15gp</td><td>Alchemical</td></tr><tr><td>Smoke Stick</td><td>10gp</td><td>Alchemical</td></tr><tr><td>Curative Herbs</td><td>5gp</td><td>Healing</td></tr><tr><td>Tonic</td><td>50gp</td><td>Healing</td></tr><tr><td>Anti-Venom</td><td>100gp</td><td>Healing</td></tr><tr><td>Baneberry</td><td>6gp</td><td>Poison</td></tr><tr><td>Hemlock</td><td>220gp</td><td>Poison</td></tr><tr><td>Salts of Vitesse</td><td>25gp</td><td>Psychoactive</td></tr></tbody></table>
 
