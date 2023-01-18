@@ -12,6 +12,15 @@ January 9 - January 15
 <h1>Grimsby</h1>
 <h4>Population: 40</h4>
 
+Many years ago this town was the site of particulary grim battle. Farmers regularly unearth bones in the fields and all the buildings are warded in some way against the undead, who are more common than normal.  
+
+<h2>Post Office</h2>
+A small shack with a window where you can drop off and pick up mail.
+- <b>Ruut Aare,</b> A simple man who cares deeply about mail
+- <b>Prices:</b>
+    - Local - 1gp
+    - Else - 2gp
+
 <h2>The Alchemist Shoppe</h2>
 The front porch of this modest house has been converted into a small alchemy shop.
 
