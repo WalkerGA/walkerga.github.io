@@ -53,8 +53,38 @@ h1 {
     font-style:normal;
 }
 
+h2 {
+    font-family: 'souvenir', sans-serif;
+    font-weight: normal;
+    font-style: normal; 
+}
+
+h3 {
+    font-family: 'souvenir', sans-serif;
+    font-weight: normal;
+    font-style: normal; 
+}
+
 h4 {
     font-family:'souvenir', sans-serif;
     font-weight: normal;
     font-style: normal;
+}
+
+p {
+    font-family: 'souvenir', sans-serif;
+    font-weight: normal;
+    font-style: normal; 
+}
+
+b {
+    font-family: 'souvenirbold', sans-serif;
+    font-weight: normal;
+    font-style: normal; 
+}
+
+i {
+    font-family: 'souveniritalic', sans-serif;
+    font-weight: normal;
+    font-style: normal; 
 }
