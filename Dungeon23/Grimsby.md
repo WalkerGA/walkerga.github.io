@@ -18,8 +18,8 @@ January 9 - January 15
 
 <h2>Post Office</h2>
 <p>A small shack with a window where you can drop off and pick up mail.</p>
--<p> <b>Ruut Aare,</b> A simple man who cares deeply about mail</p>
--<p><b>Prices:</b> Local - 1gp, elsewhere - 3gp</p>
+- <p> <b>Ruut Aare,</b> A simple man who cares deeply about mail</p>
+- <p> <b>Prices:</b> Local - 1gp, elsewhere - 3gp</p>
 
 ---
 
