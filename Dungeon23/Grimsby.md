@@ -10,7 +10,7 @@ January 9 - January 15
 
 
 <h1>Grimsby</h1>
-<h4>Population: 40</h4>
+<h4>Population: 100</h4>
 
 <p>Many years ago this town was the site of particulary grim battle. Farmers regularly unearth bones in the fields and all the buildings are warded in some way against the undead, who are more common than normal.</p>
 
