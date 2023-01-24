@@ -13,4 +13,5 @@ nav_order: 3
 
 <h1>Church of Transmutation</h1>
 <h3>This instensly elaborate wooden church was built in honor of ____</h3>
-<img src="/img/church.jpg" alt="" >
+
+<img src="/img/church.jpg" alt="" width="auto" height="auto">
