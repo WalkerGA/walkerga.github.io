@@ -1,3 +1,6 @@
+head {
+    background-color: black;
+}
 .overlay {
     position: fixed;
     width: 100%;
