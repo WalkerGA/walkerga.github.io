@@ -1,10 +1,6 @@
-head {
-    background-color: black;
-}
-
-pre {
+body {
+    background-color: grey;
     color: white;
-    background-color: black;
 }
 .overlay {
     position: fixed;
@@ -29,3 +25,21 @@ pre {
     width: 50vw;
     margin: 30px;
 }
+
+.container {  display: grid;
+    grid-template-columns: 0.6fr 1.4fr 1fr;
+    grid-template-rows: 0.4fr 1.6fr;
+    grid-auto-columns: 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "Header Header Header"
+      "NavBar Content Content";
+  }
+  
+  .Header { grid-area: Header; }
+  
+  .NavBar { grid-area: NavBar; }
+  
+  .Content { grid-area: Content; }
+  
