@@ -1,6 +1,11 @@
 head {
     background-color: black;
 }
+
+pre {
+    color: white;
+    background-color: black;
+}
 .overlay {
     position: fixed;
     width: 100%;
