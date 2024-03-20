@@ -22,8 +22,8 @@ html,body{
     background:red;
   }
   .left {
-      width: 178px;
       float:left;
+
     min-height:100%;
     background:green;
   }
