@@ -18,8 +18,7 @@ html,body{
   }
   .top {
     top:0;
-    height: 92px;
-    background:red;
+
   }
   .left {
     height: 100%;
@@ -27,12 +26,11 @@ html,body{
     position: fixed;
     z-index: 1;
     left: 0;
-    top: 0;
+    float: top;
     overflow-x: hidden;
   }
   .main {
-    margin-left:178px;
-    min-height:100%;
-    background:yellow;
+    margin-left: 160px;
+    padding: 0px 10px;
    }
   
