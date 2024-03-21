@@ -35,4 +35,8 @@ html,body{
     margin-left: 180px;
     padding: 0px 10px;
    }
+
+   pre {
+    background-color: black;
+   }
   
