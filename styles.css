@@ -22,7 +22,7 @@ html,body{
   }
   .left {
     height: 100%;
-    width: 1800px;
+    width: 180px;
     position: fixed;
     z-index: 1;
     left: 0;
