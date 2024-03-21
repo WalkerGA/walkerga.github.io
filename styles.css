@@ -12,21 +12,32 @@
 }
 
 .Logo { 
-  grid-area: Logo; 
+  grid-area: Logo;
+  border-style: outset;
+  border-color: gray;
+
 }
 
 .SideNav { 
   grid-area: SideNav;
+  border-style: outset;
+  border-color: gray;
 }
 
 .Misc { 
-  grid-area: Misc; 
+  grid-area: Misc;
+  border-style: outset;
+  border-color: gray; 
 }
 
 .Main { 
   grid-area: Main; 
+  border-style: outset;
+  border-color: gray;
 }
 
 .Header { 
   grid-area: Header; 
+  border-style: outset;
+  border-color: gray;
 }
