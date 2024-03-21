@@ -13,7 +13,6 @@
 
 .Logo { 
   grid-area: Logo; 
-  background-color: white;
 }
 
 .SideNav { 
@@ -22,15 +21,12 @@
 
 .Misc { 
   grid-area: Misc; 
-  background-color: blue;
 }
 
 .Main { 
   grid-area: Main; 
-  background-color: gray;
 }
 
 .Header { 
   grid-area: Header; 
-  background-color: green;
 }
