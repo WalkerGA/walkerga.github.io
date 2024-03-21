@@ -1,5 +1,5 @@
 body {
-    background-color: #54295c;
+    background-color: black;
     color: white;
 }
 
@@ -18,6 +18,8 @@ html,body{
   }
   .top {
     top:0;
+    background-color: black;
+    color: green;
 
   }
   .left {
