@@ -28,12 +28,14 @@
   grid-area: Misc;
   border-style: outset;
   border-color: gray; 
+  height: 100%;
 }
 
 .Main { 
   grid-area: Main; 
   border-style: outset;
   border-color: gray;
+  height: 100%;
 }
 
 .Header { 
