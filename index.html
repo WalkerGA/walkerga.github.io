@@ -1,0 +1,2180 @@
+<!DOCTYPE html>
+<html lang="en-GB" class="theme-light">
+	<head>
+		<meta charset="utf-8"/>
+
+		<title>Write Skyscrapers template</title>
+
+		<meta name="writer" content="Speak the Sky"/>
+
+		<meta name="description" content="An HTML template for analog games, with built-in tools and display controls.">
+
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+
+		<script>
+			const themeCheck = window.localStorage.getItem("themeControl") ?? "light";
+			document.querySelector("html").className = "theme-"+themeCheck;
+		</script>
+
+		<style>
+			:root { /* there are some gaps between colours (e.g. from grey-3 to grey-5), so you can copy stuff from the Like Skyscrapers file without having to worry about variable names, if you want */
+				--white: #fff;
+
+				--grey-1: #eee;
+				--grey-2: #bbb;
+				--grey-3: #777;
+				--grey-5: #222;
+
+				--black: #000;
+
+				--red-1: #c00;
+				--red-2: #e99;
+
+				--blue-1: #039;
+				--blue-2: #8af;
+				--blue-3: #bdf;
+				--blue-4: #149;
+
+				--font-body-serif: "Times New Roman", Times, "Noto Serif", serif;
+				--font-body-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Oxygen, Cantarell, sans-serif;
+				--font-icons: Dicier, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Oxygen, Cantarell, sans-serif;
+
+				--font-size-body: 1.25em;
+				--line-height-body: 1.5;
+				--font-size-h1-h2: 1.618em;
+				--font-size-h3: 1.382em; /* 1 + 0.618 ^ 3, i.e. one GR from 1 to 1.618 */
+				--font-size-small: 0.854em; /* 0.618 + 0.618 ^ 3, i.e. one GR from 0.618 to 1 */
+
+				--text-margins-main: 1em 0em;
+				--text-button-radius: 0.2em;
+				--text-button-padding: 0.1em 0.15em 0.05em;
+
+				--menu-top-position: 25px;
+				--min-body-margin: 0.5em;
+				--bottom-menu-label-margin: 0.3em;
+
+				--main-width: 540px;
+				--menu-width: 220px;
+				--column-gap: 20px;
+				--wrapper-width: calc(var(--main-width) + var(--menu-width) + var(--column-gap));
+			}
+
+		/* //////////
+			FONTS
+		////////// */
+
+			@font-face {
+    			font-family: Dicier;    			
+    			src: url(data:application/font-woff2;charset=utf-8;base64,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) format("woff2");
+			}
+
+		/* ////////////////////
+			BASIC STRUCTURE
+		//////////////////// */
+
+			#skip-link a {
+				padding: 6px;
+				position: absolute;
+				top: -40px;
+				left: 0px;
+				color: var(--white);
+				background: var(--blue-1);
+				transform: translateY(-100%);
+				-webkit-transition: transform 1s ease-out;
+				transition: transform 1s ease-out;
+				z-index: 100;
+			}
+
+			#skip-link a:focus {
+				-webkit-transition: transform 0.1s ease-in;
+				transition: transform 0.1s ease-in;
+			}
+
+			html {
+				scroll-padding-top: 20px;
+				scroll-padding-bottom: 20px;
+			}
+
+			body {
+				margin: 0 0;
+				font-family: var(--font-body-serif);
+			}
+
+			body > * {
+				font-size: var(--font-size-body);
+				line-height: var(--line-height-body);
+			}
+
+			#wrapper {
+				max-width: var(--wrapper-width);
+				margin: auto;
+			}
+
+			#content {
+				display: grid;
+				grid-template-columns: var(--menu-width) auto;
+				column-gap: var(--column-gap);
+			}
+
+			.hidden-svg {
+				height: 0;
+				position: fixed;
+			}
+
+			#menu {
+				display: flex;
+				flex-direction: column;
+				position: -webkit-sticky;
+				position: sticky;
+				align-self: flex-start;
+				top: var(--menu-top-position);
+			}
+
+			main {
+				margin-right: var(--min-body-margin);
+			}
+
+			header,
+			footer {
+				text-align: center;
+			}
+
+			#cover {
+				text-align: center;
+			}
+
+		/* /////////
+			MENU
+		///////// */
+
+			#menu-controls {
+				display: flex;
+				justify-content: center;
+				gap: var(--bottom-menu-label-margin);
+			}
+
+			#menu-controls > legend,
+			#menu h1 {
+				margin: 0;
+				font-size: 0;
+			}
+
+			#menu-controls label {
+				display: flex;
+				justify-content: center;
+				height: var(--font-size-body);
+			}
+
+			#menu-controls label:first-of-type {
+				margin-left: var(--bottom-menu-label-margin);
+			}
+
+			#menu-controls label:last-of-type {
+				margin-right: var(--bottom-menu-label-margin);
+			}
+
+			#menu-close:checked + label {
+				background: none;
+				border-color: transparent;
+			}
+
+			.menu-tab {
+				max-height: calc(100vh - 2 * var(--menu-top-position) - var(--font-size-body));
+				overflow-y: auto;
+				display: none;
+				padding-left: var(--min-body-margin);
+			}
+
+			.visible-menu-tab {
+				display: block;
+			}
+
+		/* NAV/TOC */
+
+			nav ol {
+				margin: 0em;
+			}
+
+			nav > ol {
+				padding-left: 0em;
+			}
+
+			nav li > ol {
+				padding-left: 1em;
+			}
+
+			nav li {
+				list-style-type: none;
+			}
+
+			nav a {
+				text-decoration: none;
+			}
+
+		/* SETTINGS */
+
+			fieldset {
+				border: none;
+				padding-inline: 0em;
+				padding-block: 0em;
+			}
+
+			.menu-tab fieldset {
+				margin-top: 1em;
+			}
+
+			input[type=radio] {
+				position: absolute;
+				opacity: 0;
+				height: 0;
+				width: 0;
+			}
+
+			fieldset label {
+				line-height: calc(0.2 + var(--line-height-body));
+				border-width: 1px;
+				border-style: solid;
+				border-color: transparent;
+				border-radius: var(--text-button-radius);
+				padding: var(--text-button-padding);
+				cursor: pointer;
+			}
+
+		/* TOOLS */
+
+			.tool-box {
+				text-align: center;
+			}
+
+			button {
+				border-width: 1px;
+				border-style: solid;
+				border-color: transparent;
+				font-family: inherit;
+				font-size: 1em;
+				border-radius: var(--text-button-radius);
+				padding: 0.15em 0.15em 0em;
+			}
+
+			.game-piece-position {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 3em;
+			}
+
+			.game-piece-position .dicier {
+				font-size: var(--font-size-h1-h2);
+			}
+
+		/* /////////
+			TEXT
+		///////// */
+
+		/* HEADINGS */
+
+			h1,
+			h2,
+			h3 {
+				margin: 0.618em auto 0.382em;
+			}
+
+			h1 {
+				font-size: var(--font-size-h1-h2);
+				letter-spacing: 0.06em;
+				line-height: 1.15em;
+				margin-top: 0em;
+			}
+
+			h2 {
+				letter-spacing: 0.05em;
+				font-size: var(--font-size-h1-h2);
+			}
+
+			h3,
+			#menu h2 {
+				letter-spacing: 0.04em;
+				font-size: var(--font-size-h3);
+			}
+
+		/* BODY TEXT */
+
+			section p {
+				margin: var(--text-margins-main);
+			}
+
+			abbr {
+				font-feature-settings: "c2sc" 1;
+			}
+
+			abbr[title] {
+				cursor: help;
+			}
+
+			footer p {
+				font-size: var(--font-size-small);
+			}
+
+		/* SECTION DECORATION */
+
+			.section-spacer,
+			.subsection-spacer {
+				border: none;
+				color: inherit;
+				display: flex;
+				justify-content: center;
+			}
+
+			.section-spacer {
+				margin: 3.2em auto;
+				font-size: var(--font-size-h1-h2);
+			}
+
+			.section-spacer::after {
+				content: "—";
+			}
+
+			.subsection-spacer {
+				margin: 1.6em auto;
+			}
+
+			.subsection-spacer::after {
+				content: "-";
+			}
+
+		/* ITALICS */
+
+			.italics-italic {
+				font-style: italic;
+			}
+
+			.italics-asterisk,
+			.italics-slash,
+			.italics-highlight,
+			.italics-none {
+				font-style: normal;
+			}
+
+			.italics-asterisk::before,
+			.italics-asterisk::after {
+				content: "*";
+			}
+
+			.italics-slash::before,
+			.italics-slash::after {
+				content: "/";
+			}
+
+		/* DICE + CARDS */
+
+			.dicier {
+				font-family: var(--font-icons);
+			}
+
+			p .dicier {
+				vertical-align: -0.108em;
+			}
+
+			.dicier-list {
+				padding-left: 1em;
+				margin: 0;
+				display: grid;
+				grid-template-columns: 1.2em auto;
+				column-gap: 0.25em;
+			}
+
+			.dicier-list > dt {
+				font-family: var(--font-icons);
+				grid-column-start: 1;
+			}
+
+			.oracle-icon-centre > dt {
+				text-align: center;
+			}
+
+			.oracle-icon-right > dt {
+				text-align: right;
+			}
+
+			.dicier-list > dd {
+				grid-column-start: 2;
+				margin-left: 0em;
+			}
+
+			.oracle-grid {
+				display: grid;
+				grid-template-columns: 2.4em auto;
+				column-gap: 1em;
+			}
+
+			.oracle-grid > dd {
+				margin: 0em;
+			}
+
+			.oracle-grid > dd :first-child {
+				margin-top: 0em;
+			}
+
+			.oracle-grid > dd :last-child {
+				margin-bottom: 0em;
+			}
+
+			.icon-main {
+				font-size: var(--font-size-h1-h2);
+				font-family: var(--font-icons);
+			}
+
+			.two-component-oracle .icon-main,
+			.icon-main.two-component-entry {
+				grid-row: span 2;
+			}
+
+			.icon-main.one-component-entry {
+				grid-row: span 1;
+			}
+
+			.oracle-grid .icon-main a {
+				text-decoration: none;
+			}
+
+			.oracle-entry-main,
+			.oracle-entry-details {
+				padding-right: 1em;
+			}
+
+			.oracle-grid > hr {
+				grid-column: span 2;
+				border: none;
+			}
+
+		/* //////////
+			MEDIA
+		////////// */
+
+			.svg-basic-stroke {
+				fill: none;
+				stroke-width: 1.2;
+				stroke-miterlimit: 1.5;
+				stroke-linecap: round;
+			}
+
+			.svg-menu-tab-icon {
+				width: 100%;
+				fill: none;
+			}
+
+			p .svg-menu-tab-icon,
+			ul .svg-menu-tab-icon {
+				width: 1em;
+				height: 1em;
+			}
+
+			.svg-logo {
+				height: var(--font-size-h1-h2);
+				width: var(--font-size-h1-h2);
+				vertical-align: middle;
+			}
+
+		/* ////////////
+			DISPLAY
+		//////////// */
+
+		/* TABLET */
+
+			@media screen and (max-width: 799px) {
+				#wrapper {
+					max-width: 100%;
+				}
+
+				main {
+					margin: auto;
+					max-width: var(--main-width);
+					grid-column: span 2;
+					padding: 0 5%;
+				}
+
+				#menu {
+					grid-column: span 2;
+					bottom: 0;
+					width: 100%;
+					z-index: 2;
+					order: 2;
+					border-top-width: 1px;
+					border-top-style: solid;
+				}
+
+				#menu-controls {
+					order: 4;
+					width: 100%;
+					margin: 0.5em auto;
+				}
+
+				#menu-controls label {
+					width: 25%;
+				}
+
+				.menu-tab {
+					column-count: 2;
+					padding: 1em 2em 0em;
+					margin: auto;
+				}
+
+				nav {
+					width: 330px;
+				}
+
+				#menu-tools {
+					column-count: 1;
+				}
+
+				.tool-box {
+					margin-bottom: 1em;
+				}
+
+				nav, #menu-tools {
+					column-gap: 10%;
+				}
+
+				nav li,
+				#menu-settings fieldset {
+					break-inside: avoid;
+				}
+
+				.menu-tab h2 {
+					display: none;
+				}
+
+				.menu-tab fieldset:first-of-type {
+					margin-top: 0em;
+				}
+			}
+
+		/* MOBILE */
+
+			@media screen and (max-device-width: 499px), screen and (max-width: 499px) {
+				:root {
+					--font-size-body: 1.15em;
+					--line-height-body: 1.25;
+				}
+
+				.svg-menu-tab-icon {
+					width: 25%;
+				}
+
+				.dicier-list {
+					padding-left: 0em;
+				}
+
+				.oracle-grid {
+					grid-template-columns: 1em auto;
+					column-gap: 0.25em;
+				}
+
+				.oracle-entry-main,
+				.oracle-entry-details {
+					padding-right: 0em;
+				}
+
+				.oracle-grid .icon-main {
+					font-size: var(--font-size-body);
+				}
+
+				.oracle-grid.two-component-oracle .icon-main,
+				.oracle-grid .icon-main.two-component-entry {
+					grid-row: span 1;
+				}
+
+				.oracle-grid .oracle-entry-details {
+					grid-column: span 2;
+					padding-right: 0em;
+				}
+			}
+
+		/* ////////////////
+			LIGHT THEME
+		//////////////// */
+
+			.theme-light body {
+				color: var(--grey-5);
+				background: var(--white);
+			}
+
+			.theme-light ::selection {
+				color: var(--white);
+				background: var(--blue-1);
+			}
+
+			.theme-light a {
+				color: var(--blue-1);
+			}
+
+			.theme-light nav a:hover,
+			.theme-light nav a:active {
+				color: var(--grey-5);
+				background: var(--blue-3);
+			}
+
+			.theme-light #dice-roll .dicier:first-child {
+				background: var(--blue-3);
+			}
+
+			.theme-light .suit-red {
+				color: var(--red-1);
+			}
+
+			.theme-light .suit-black {
+				color: var(--black);
+			}
+
+			.theme-light .italics-highlight {
+				background: var(--blue-3);
+			}
+
+			@media screen and (max-width: 799px) {
+				.theme-light #menu {
+					background: var(--white);
+					border-top-color: var(--black);
+				}
+			}
+
+		/* FORMS */
+
+			.theme-light fieldset label:hover,
+			.theme-light input[type=radio]:focus + label,
+			.theme-light button:hover {
+				border-color: var(--blue-1);
+			}
+
+			.theme-light input[type=radio]:checked + label,
+			.theme-light button {
+				background: var(--blue-3);
+			}
+
+			.theme-light .dice-counter {
+				color: var(--grey-5);
+				border-color: var(--grey-3);
+			}
+
+			.theme-light button:active {
+				background: var(--blue-2);
+			}
+
+		/* SVG */
+
+			.theme-light .svg-basic-fill {
+				fill: var(--grey-5);
+			}
+
+			.theme-light .svg-basic-stroke,
+			.theme-light .svg-menu-tab-icon {
+				stroke: var(--grey-5);
+			}
+
+			.theme-light .svg-diagram {
+				fill: var(--white);
+				stroke: var(--grey-5);
+			}
+
+		/* ///////////////
+			DARK THEME
+		/////////////// */
+
+			.theme-dark body {
+				color: var(--grey-1);
+				background: var(--grey-5);
+			}
+
+			.theme-dark ::selection {
+				color: var(--grey-5);
+				background: var(--blue-3);
+			}
+
+			.theme-dark a {
+				color: var(--blue-2);
+			}
+
+			.theme-dark nav a:hover,
+			.theme-dark nav a:active {
+				color: var(--grey-1);
+				background: var(--blue-4);
+			}
+
+			.theme-dark #dice-roll .dicier:first-child {
+				background: var(--blue-4);
+			}
+
+			.theme-dark .suit-red {
+				color: var(--red-2);
+			}
+
+			.theme-dark .suit-black {
+				color: var(--white);
+			}
+
+			.theme-dark .italics-highlight {
+				background: var(--blue-4);
+			}
+
+			@media screen and (max-width: 799px) {
+				.theme-dark #menu {
+					background: var(--grey-5);
+					border-top-color: var(--grey-1);
+				}
+			}
+
+		/* FORMS */
+
+			.theme-dark fieldset label:hover,
+			.theme-dark input[type=radio]:focus + label,
+			.theme-dark button:hover {
+				border-color: var(--blue-2);
+			}
+
+			.theme-dark input[type=radio]:checked + label,
+			.theme-dark button {
+				background: var(--blue-4);
+			}
+
+			.theme-dark .dice-counter {
+				color: var(--grey-1);
+				border-color: var(--grey-3);
+			}
+
+			.theme-dark button:active {
+				background: var(--blue-1);
+			}
+
+		/* SVG */
+
+			.theme-dark .svg-basic-fill {
+				fill: var(--grey-1);
+			}
+
+			.theme-dark .svg-basic-stroke,
+			.theme-dark .svg-menu-tab-icon {
+				stroke: var(--grey-1);
+			}
+
+			.theme-dark .svg-diagram {
+				fill: var(--grey-5);
+				stroke: var(--grey-1);
+			}
+
+		/* /////////////////////////////
+			RESET THEME SIDE-EFFECTS
+		///////////////////////////// */
+
+			.italics-highlight.suit-red,
+			.italics-highlight.suit-black,
+			.italics-highlight a,
+			.oracle-grid .icon-main a,
+			button {
+				color: inherit;
+			}
+		</style>
+
+		<svg class="hidden-svg">
+		<!--menu tab icons-->
+			<symbol id="icon-close-menu" stroke-width="2" viewbox="0 0 40 40">
+				<title>Close Menu</title>
+
+				<path d="M8,8 l24,24 m0,-24 l-24,24"/>
+			</symbol>
+
+			<symbol id="icon-contents" stroke-width="2" viewbox="-2 -2 44 44">
+				<title>Contents Menu</title>
+
+				<defs>
+					<path id="icon-contents-row" d="M0 0h8v8H0zm13 0h21v8H13z"/>
+				</defs>
+
+				<use href="#icon-contents-row" x="3" y="3"/>
+
+				<use href="#icon-contents-row" x="3" y="16"/>
+
+				<use href="#icon-contents-row" x="3" y="29"/>
+			</symbol>
+
+			<symbol id="icon-settings" stroke-width="2.7" viewBox="-2 -2 52 52">
+				<title>Settings Menu</title>
+
+				<path d="M27 0h-6l-2 9-2 1-8-5-4 4 5 8-1 2-9 2v6l9 2 1 2-5 8 4 4 8-5 2 1 2 9h6l2-9 2-1 8 5 4-4-5-8 1-2 9-2v-6l-9-2-1-2 5-8-4-4-8 5-2-1-2-9Zm-3 18a6 6 0 1 1 0 12 6 6 0 0 1 0-12Z"/>
+			</symbol>
+
+			<symbol id="icon-tools" stroke-width="2" viewbox="-2 -2 44 44">
+				<title>Tools Menu</title>
+
+				<path d="M3 3h34v34H3zm10 5a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5zm14 14a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5z"/>
+			</symbol>
+
+		<!--StS logo-->
+			<symbol id="StS-logo" viewBox="0 0 96 96">
+				<path d="M4.04 88.1a78.67 78.67 0 0 0 11.07-45.3A40.31 40.31 0 0 1 58.3.12a.61.61 0 0 1 0 1.22A33.4 33.4 0 1 0 94.26 37.3a.61.61 0 0 1 1.22 0A40.31 40.31 0 0 1 52.8 80.5 78.68 78.68 0 0 0 7.52 91.56l-6.6 3.96a.61.61 0 0 1-.83-.84l3.95-6.6Z"/>
+
+				<path d="M61.97 14.6a1 1 0 0 0-1.96 0s-.73 3.96-2.01 7.82c-.82 2.46-1.84 4.9-3.08 6.14-1.24 1.24-3.67 2.25-6.13 3.07a66.33 66.33 0 0 1-7.82 2 1 1 0 0 0 0 1.98s3.96.72 7.82 2c2.46.82 4.9 1.84 6.13 3.08 1.24 1.24 2.26 3.67 3.08 6.13 1.28 3.87 2 7.82 2 7.82a1 1 0 0 0 1.97 0s.73-3.95 2.01-7.82c.82-2.46 1.84-4.9 3.08-6.13 1.24-1.24 3.67-2.26 6.13-3.07 3.87-1.29 7.82-2.01 7.82-2.01a1 1 0 0 0 0-1.97s-3.95-.73-7.82-2.01c-2.46-.82-4.9-1.83-6.13-3.07-1.24-1.24-2.26-3.68-3.08-6.14-1.28-3.86-2-7.82-2-7.82Z"/>
+			</symbol>
+		</svg>
+	</head>
+
+	<body>
+		<div id="skip-link"><a href="#introduction">Skip to main content</a></div>
+
+		<div id="wrapper">
+			<div id="cover">
+				<svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" version="1.1" viewBox="0 0 195 120" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+					<title>Write Skyscrapers</title>
+
+					<desc>Cover image showing the words "Write Skyscrapers" in large text, followed by an asterisk, and then after another asterisk the text "an HTML template for analog games, with built-in tools and display controls".</desc>
+
+					<g class="svg-basic-fill">
+						<path d="m22 18c-0.95-2.2-3.8-1.8-4.5-3.7 2.1-1.1 5.1-0.91 7.5-1.2 2 0.5 5.6-1 5.8 2.1-0.73 1.5-2.1 3.3-0.9 5.1 0.69 2.5 1.7 4.9 2.1 7.5 2 2.6 2.3 6 4 8.8 1.4 1.8 0.64 5.6 3.7 5.9 2.3-1.6 2.1-5.2 3.7-7.4 0.9-1.6 0.56-3.5 1.6-5.2 0.71-2.5-0.47-4.7-0.78-7-0.55-2.8-2-6.8-5.6-6.6-4.7-0.11-0.94-3.5 1.6-3.3 3.9-0.76 7.7-0.062 12-0.14 2.3-0.86 2.4 3 0.34 2.6-2.5-0.28-3.6 2.7-2.3 4.6 0.42 2.3 2.2 4.2 1.8 6.7 1.1 1.5 1.9 3.1 1.9 5.1 0.9 2.6 1.8 5.3 3.7 7.3 2.4-0.12 2.1-3.2 3-4.9 0.72-3.1 2.3-5.9 2.1-9.1 1.7-1.7 1.3-4 2-6.2 0.69-3.5-4.1-2.3-5.3-4.7-0.48-2.6 3.8-1.6 5.5-2 1.8 0.34 3.1-1.2 4.8-0.36 2.2 0.47 5.6-0.21 6.6 2.2 0.39 3.1-3.6 1.9-5.2 3.2-1.4 1.8-2.2 4-3.1 6-1.6 3.4-1.4 7.3-3.4 11-0.98 1.9-0.6 4-2.1 5.7-1.3 1.9-0.87 4.3-1.9 6.3-1.2 2.1-1.2 4.3-1.7 6.6-0.083 2.2-3 3.6-4.1 1.4-2.1-2.7-1.2-6.4-3-9.3-1.4-3-1.6-6.6-3.5-9.3-1.6 0.28-2 2.8-2.5 4.3-0.77 1.6-2.1 3-2.3 4.9-1 3.3-2 6.6-3.3 9.8-1.1 3.4-4.2 1.7-4.7-0.81-2.8-6.3-4.7-13-7.2-19-0.29-2-2-3.3-1.9-5.3-1.5-3.1-2-6.5-3.7-9.5l-0.24-1zm56 23c0.35 2.7 3.8 0.85 5.5 0.7 2.2-1.9 2.1-5.1 1.2-7.5-1.5-1.6-3.9-4.3-6-2.1-1.2 2-0.63 4.7-0.7 7 0.22 0.51-0.51 1.7 0 1.9zm-6.7 15c-2.9-1.9 2.6-3.2 2.2-5.9 0.84-1.8-0.022-3.4 0.4-5.3-0.7-3.8-0.085-7.5-0.39-11-0.78-1.5-6.2-2.3-3-4.2 2.6-0.26 5.3 0.056 7.9 0.26 3 1.2 7-1.8 9.5 1.3 3.9 2.9 3.8 9.4-0.18 12-2 2.2 1.7 4.4 2.9 5.8 0.64 2.4 3.7 2.9 4.6 5.1-0.71 2.2-3.7 2.6-5.6 2-3.4-0.81-2-6.5-5.7-7.3-1.1-1.6-3-2.6-4.8-3-1.5 1.3-1.2 4-0.67 5.8 0.42 2 3.7 1.8 3.3 4-2 0.36-4.2 0.55-6.3 0.56-1.3-0.16-3-0.17-4.1 0zm36-0.3c-2.6-1.4-5.6 0.72-8.4-0.5-2.3-0.59-0.95-3.6 1.1-3.5 1.5-0.11 3.4-0.93 2.3-2.8-0.046-5.5 0.72-11 0.6-17-0.34-3-3.2-1.4-4.5-3.1-0.15-2.8 3.7-0.99 5.1-2.1 2.1-0.12 3.8-0.11 5.8 0 1.8-0.4 4.2-0.075 4.4 2.3-1.6 1-5.2 2.2-4.1 5-8e-3 2.5 0.1 5.1-0.78 7.4 0.61 3.1-1.3 6.8 0.8 9.6 2.1-0.1 4.4-0.21 5.4 2.3-0.81 3.4-5.2 1.7-7.7 1.9zm26-1c-2.7 0.24-5.6 0.12-8.2-0.4 0.65-2.6 4.2-3.3 3.7-6.8 0.34-2.9 0.21-6.1-0.41-8.8-0.16-2.1 0.33-4.9-1.1-6.7-1.8-1.2-3.8 0.45-5.4 1.3-1.2 0.71-4.2 1.1-4.7-0.061 0.34-2.1 1.2-4.3 2.6-5.9 2.7-0.32 5.7 1.5 8.5 0.62 3.1-0.4 6.3 1.6 9.2-0.16 2.3-1.5 5.2-1.8 5.6 1.6 0.7 1.2 1.6 4.8-0.9 3.9-1.9-1.3-4.3-1.3-6.3-2-3.1 0.27-1.8 4-2.3 6-5e-3 3.3 0.56 6.4 0.2 9.7 0.18 2.1 0.47 4 2.7 4.8 2.2 1.2 0.82 3.7-1.4 3.3-0.65 0.07-1.1-0.52-1.8-0.4zm14-0.7c0.63-2.6 5.3-0.46 4.6-3.9 0.32-3.5-1.1-7-0.23-11-0.36-2.4 0.88-6.1-0.81-7.9-1.2-0.8-5.8-1.9-2.9-3.4 2.8-0.034 5.7-0.065 8.4 0.32 2.9-1.4 6 0.15 9-0.24 3.2 0.12 4.6 3.7 4.5 6.5-1.2 1.3-3.2 0.37-3.8-1.1-1.3-2.2-3.4-3.4-6.1-3.1-2.7-0.79-4 2.5-3.6 4.6 0.083 1.8-0.44 5.8 2.5 4.5 2.3 0.6 3.4-1.3 4.1-3.1 1.6-2.9 2.8 0.66 2.4 2.4 0.075 2.7-0.1 5.5-0.6 8-2.4 2.3-3-1.5-2.6-3.3-1.3-1.3-4-1.2-5.6-0.41-0.53 2 0.5 4.2 0.1 6.3 0.11 2.7 3.3 2.2 5.2 2.6 2.6 0.24 5.4-0.19 7-2.6 1.5-2.9 6.6-0.42 4.8 2.5-1.1 3-4.8 2.8-7.5 2.7-6.1-0.035-12-0.013-18 0.2-0.47-0.16-0.49-0.73-0.7-1.1z"/>
+
+						<path d="m17 70c-0.055-1.6 0.18-3.5 1.1-4.8 1.9-0.61 1.7 2.1 2.3 3.3 0.98 1.7 2.8 2 4.7 1.8 3.5-0.31 3.4-6.1 0.23-6.9-2.5-1.5-5.7-3.4-7.7-6.3-0.91-2.8 0.71-7.1 4-7.2 1.8-0.25 4.4-0.81 5.5 1 1.5 0.6 3.5-1.5 3.4 1.3-0.16 1.1-0.31 3.5-1.7 3.9-2-0.16-1.2-3.2-3-3.9-1.8-2.1-6-0.14-5 2.6 0.0086 2.5 2.8 3.7 4.8 4.7 2.8 1.1 6.4 4 5.4 7.5-0.12 3-3.1 5.5-6.1 5.7-2.9 0.32-6.1-0.39-8-2.6zm25 1.5c2.2-0.89 0.25-3-0.94-3.9-1.4-2.4-2.4-0.15-2.2 1.5-0.62 1.4 3 2.2 0.84 3.1-1.9 0.044-4 0.47-5.7-0.12 0.15-1.7 3-2.2 2.1-4.7-0.19-2.5 0.96-5.6-0.5-7.7-1.2 0.23-2.3-2.1-0.45-1.6 1.5 0.23 4.2-0.47 4.6 1.4-1.5 0.54-1.3 4.9 0.25 4.3 1.2-0.86 3.3-2.3 2.1-4.1-0.14-2 2.6-0.97 3.9-1.5 1.8-0.68 3.5 1.2 1.1 1.9-1.7 0.25-2.7 1.8-4.1 2.5-1.4 1.7 0.011 3.3 1.4 4.6 0.8 2.1 4.3 2.5 4.1 4.9-1.4 1.1-3.7 0.085-5.5 0.17-0.31 0.11-1.4-0.81-0.99-0.67zm11 0.2c0.41-1.3 2.6-1.1 1.9-2.9 0.69-3.4-2.5-5.5-3.7-8.3-1.8-0.051-1.3-2.2 0.15-2.2 1.3 0.79 4.4-0.71 4 1.4-1.4 1.2 0.2 2.7 0.63 4 1.7 1.6 2.7-2.8 2-3.7-1.8-1.8 1.4-1.7 2.8-1.7 3-0.83 2.3 2.5 0.13 3-1.1 1.9-3.8 3.5-3.1 6.2-0.55 1.7 0.83 2.8 2.2 3.4 0.18 1.7-2.6 1.3-3.8 1.4-0.95-0.15-2.8 0.41-3.2-0.6zm12-1.6c0.0078-2.5 2.2-2.8 2.6 0 1.6 2.7 5.8-0.82 3.3-2.7-1.8-1.7-5-2.3-5.1-5.3-0.7-2.6 2.1-4.3 4.1-5 1.8 0.16 4.3 1.3 3.3 3.5-1.1 2.3-1.9-2.6-4-1.7-3 0.9-1.2 4.5 1.2 4.3 1.6 1 3.3 2.3 3.6 4.3 1.3 3.8-4.5 6.5-7.4 4.4-0.93-0.36-1.7-1.2-1.6-1.9zm12-4.4c0.45-1.9 0.47-4 2.1-5.3 1.3-1.9 3.9-1.8 5.8-1.8 0.91 0.81 1.9 0.7 3 0.7 0.86 1 0.87 4.1-1 3.9-1.2-1.2-2-3.5-4.3-2.9-2.1 0.61-2.7 3.7-2.4 5.7 0.5 1.9 0.62 5.1 3.3 4.7 1.8-0.48 4.2-6 4.4-1.6 0.2 1.3 0.1 3.2-1.7 3-3.3 1-7.5-0.14-8.8-3.7 4e-3 -1.1-0.88-1.8-0.46-2.8zm19-0.7c0.59 1.5 3.8 0.51 3.9-1.2 0.48-1.9-0.74-4.1-2.8-4.1-1.9 0.85-0.72 3.6-1.1 5.3zm-3.5 8c-1.7-1.1 1.6-2 1.2-3.6 0.32-2.5-0.23-5.3 0.0029-8.1-1.9-1.1-3.3-3.1 0.2-2.6 2.2 0.61 4.6-0.067 6.7 0.4 2.8 1.6 2.7 5.5 0.3 7.3-0.45 1.7 2 2.4 2.5 3.9 1.1 0.61 2.6 2.1 0.59 2.6-1.9 0.73-3.4-0.71-3.6-2.6-1-1.2-2.3-2.7-4-2.8-0.96 1.5-0.48 4 1.4 4.6 0.15 1.3-2.7 0.95-4 0.88-0.36-0.11-1.1 0.16-1.3-0.083zm19-7.8c0.5 1.8 3.2 0.68 1.5-0.8-0.59-2.1-1.1 0.096-1.5 0.8zm-6.1 6.4c0.43-1.4 3-1 3.2-2.9 0.9-3.1 1.7-6.5 3-9.5 2.1-2.2 3 1.3 3.5 2.9 0.82 3.4 2.1 6.5 4.1 9.4-0.52 1.9-3.9 0.92-5.4 0.79-1.2-1.4 2.2-2.2 0.66-3.6-1.1-0.76-4.6-0.64-3.8 1.5 2.3 2.2-1.1 2.7-2.9 2.5-0.67 0.052-2.7 0.12-2.3-1zm21-7.9c0.29 2.7 4.6 1.3 4.3-1.1 0.34-2.1-2.7-4.2-4.3-2.8-0.1 1.3 0.16 2.8 0 3.9zm-5.2 8.1c0.14-1.3 2.9-1.2 2.2-3.1-0.28-2.1-0.21-3.6 0-5.6-0.2-1.4 0.18-3.7-1.6-3.9-0.79-1.5 0.77-1.4 1.9-1.3 2 0.11 4 0.29 5.8 0.044 1.7-0.13 3.2 0.71 3.7 2.3 1.6 2 0.63 5.3-2 5.8-1.5 0.97-4.9-0.33-4.9 2.3-0.82 2.1 2.3 2.4 2 3.8-2 0.61-4.4 0.52-6.4 0.3-0.57 0.07-0.53-0.46-0.7-0.6zm15 0.2c0.6-1.2 3.2-0.66 2.5-2.9-0.63-2.9 0.33-6.2-0.54-8.9-1.1-0.42-3.5-1.8-0.76-1.8 2.3 0.31 4.3-0.31 6.6 0 2.3-0.63 4.5 0.97 4.3 3.5-2.2 1.1-2.3-2.5-4.4-2.3-2.6-0.79-3.1 2-2.7 3.9-0.34 2 3.3 1.2 3.3-0.47 1.3-2.2 1.5 1.3 1.4 2.4 0.97 2.2-1.9 5.1-1.6 1.5-0.19-1.1-3.4-1.3-3.1 0.18-0.043 1.6-0.42 4.3 2 3.9 2 0.35 4 0.019 5.2-1.7 2-1.2 3 2.3 0.9 2.9-3.7 0.76-7.7-0.014-11 0.4-0.75-0.027-1.4 0.22-1.7-0.5zm21-7c0.59 1.5 3.8 0.51 3.9-1.2 0.7-1.9-1.5-4.9-3.4-3.6-0.83 1.4-0.27 3.2-0.5 4.8zm-3.5 8c-1.6-1.1 1.7-1.9 1.3-3.6 0.25-2.6-0.27-5.6-0.079-8.4-2.8-0.84-2.5-3 0.53-2.3 2.1 0.61 4.3-0.1 6.4 0.35 2.7 1.5 2.8 5.5 0.3 7.3-0.042 1.8 2 2.7 2.7 4.1 1.4 0.41 2.1 2.2 0.21 2.5-2 0.73-3.2-1-3.5-2.8-0.96-1-2.1-2.3-3.6-2.6-1.4 0.6-1 4 0.77 4.3 1.5 1.5-2.1 1.3-3.2 1.2-0.56-0.1-1.4 0.093-1.8-0.11zm14-2.9c4.1e-4 -2.2 1.9-2.9 2.5-0.37 1 2.8 5.3 0.44 3.9-1.8-1.9-2.1-5.5-2.5-5.7-5.9-0.29-2.5 2.2-4 4.2-4.7 1.9 0.14 4.2 1.3 3.4 3.5-1.3 2.2-2.2-3.1-4.5-1.6-2.8 1.9-0.058 4.2 2 4.5 2.2 1.1 3.6 3.5 3.4 5.9-1.4 3.6-6.9 4.4-9.1 1.2-0.2-0.067 0.26-0.8-0.1-0.7zm17-19c-0.034-2.5 3.3-2.8 2.3 0.053-0.065 1.8-3.2 2.4-2.2-0.053zm-4.7-0.3c0.63-1.9 2.9 0.41 3.4 1.6 0.56 1.6-2.1 0.59-2.6-0.2-0.31-0.4-0.93-0.82-0.8-1.4zm6.5 4c-0.16-2.3 4.9-1.3 3 0.6-0.94 0.67-2.8-0.18-3-0.6zm-7.2 1.4c0.11-1.4 2.7-1.9 3.6-1.1-0.69 0.57-3.5 3.5-3.6 1.1zm5.3-0.6c1.9 0.17 2.3 4.9 0.014 3.7-0.84-0.95-0.97-2.9-0.014-3.7z"/>
+
+						<path d="m13 86.7.2.3 1 .5-.9.7v.2l.2.1 1-.6.2 1c0 .2 0 .3.2.3.1 0 .2-.1.2-.3v-1l1 .3.3-.1c0-.1 0-.2-.2-.2a11 11 0 0 0-1-.5l1-.7v-.2c0-.2-.1-.2-.2-.2l-1 .6-.1-1c0-.2-.1-.3-.2-.3-.2 0-.2.2-.2.3V87l-1-.4h-.1l-.2.1Zm7.9 6.6c-.4 0-.5-.5-.5-1l.1-2.5c0-.6-.4-1.1-1-1.1s-1.4.5-1.8.8c-.3.3-.5.6-.5.9h.1l.9-.3v-.4c.1-.2.4-.4.7-.4.5 0 .8.3.7.7v.8c0 .3 0 .4-.3.5l-1.2.5c-.6.2-1 .6-1 1 0 .5.6 1 1.1 1 1 0 1.3-.6 1.5-.6 0 0 .2.6.9.6.4 0 1-.5 1-.6 0 0-.2-.2-.3 0H21Zm-2.8-.7c0-.3.3-.6 1.2-1h.2l.1.3v.6l-.1.5c-.2.1-.5.3-.8.3a.6.6 0 0 1-.6-.7Zm6.8-3.3c.6 0 1 .4 1 1.1v2.5c0 .3-.2.4-.4.5-.2 0-.3 0-.3.2l.2.1h2l.2-.1c0-.1-.1-.2-.3-.2-.2-.1-.5-.2-.5-.5v-2.5c0-1-.6-1.7-1.3-1.7a3 3 0 0 0-2 .8v-1a4 4 0 0 1-1.3.7l-.1.1v.2c.5 0 .5.4.5.8V93c0 .3-.2.4-.5.5-.1 0-.3 0-.3.2l.3.1h2l.2-.1-.3-.2c-.3-.1-.5-.2-.5-.5v-2.5c0-.4.2-.7.3-.8.3-.3.7-.3 1.1-.3Zm7.4 1.3V89l.1-.3.6-.3v-.3h-2.4v.3l.6.3.2.3v3.6c0 .2 0 .3-.2.4l-.6.3c-.2 0-.1.3 0 .3H33v-.3a1 1 0 0 1-.7-.3l-.1-.4V91h3v2l-.7.3c-.2 0-.1.3 0 .3H37v-.3a1 1 0 0 1-.7-.3l-.1-.4V89l.1-.3.6-.3v-.3h-2.4v.3l.6.3.2.3v1.4l-.1.1a47.6 47.6 0 0 1-3 0Zm9.7-1.8c.6 0 .6.2.6.4l.2.3.2-.2c0-.4 0-1 .2-1.2L43 88l-.3.1c-.1.2-.4.2-.6.2h-3.3c-.2 0-.4 0-.5-.2l-.2-.2-.2.2c0 .3 0 .7-.2 1v.4c.2 0 .4-.3.4-.4l.6-.3h1v4.3l-.7.3v.3h2.4c.2 0 .2-.3 0-.3l-.6-.3-.1-.4v-3.5l.1-.4H42Zm5.8 4.9a1475.5 1475.5 0 0 1 2-4v3l-.1.4-.5.3v.3h2.4v-.3a1 1 0 0 1-.6-.3l-.1-.3c-.2-1.5-.2-2.3-.2-3.8l.1-.4.5-.1.1-.3-1 .1h-.6l-.3.7-1.5 3.4c0 .2-.1.1-.2 0l-1.7-4.1-1.8-.1v.3c.2 0 .5.1.7.3l.1.5a36 36 0 0 1-.5 4l-.5.1v.3H46v-.3c-.3 0-.3 0-.5-.2l-.2-.5c0-1.1.1-1.8.3-3 0-.1 0 0 0 0l1.8 4c0 .2.3.3.4 0Zm7.2-5.2v-.3h-2.6v.3l.6.3.1.6v3.3c0 .2 0 .3-.2.5l-.6.2v.3h4.5s.2 0 .2-.2l.2-1.2c-.2-.1-.4 0-.4 0l-.5.8a1 1 0 0 1-.5.2h-1.1c-.6 0-.7-.3-.7-.7v-3.2c0-.2 0-.5.2-.6.1-.2.4-.2.8-.3Zm7 5.3c.8 0 1.5-.6 1.5-.7 0-.1 0-.2-.2-.2-.2.2-.4.3-.9.3-.3 0-.8-.3-.8-1.2v-2.2c0-.4.1-.4.5-.4h1.2l.1-.3V89h-1.5l-.3-.2.1-.5c0-.1 0-.2-.2-.2 0 0-.6 1-1.2 1.1l-.1.1.1.2c.4 0 .5 0 .5.2v2.8c0 1 .5 1.4 1.3 1.4Zm4.1-4.8c.5 0 1 .3 1 .8l-.1.3-.9.1h-1c-.2 0-.2 0-.2-.2 0-.3.5-1 1.2-1Zm.2-.3a2.5 2.5 0 0 0-2.4 2.5c0 1.6 1 2.6 2 2.6 1.1 0 1.8-.7 2-1l-.1-.3h-.2c-.3.5-.8.6-1.1.6-1.1 0-1.8-1-1.8-2 0-.5 0-.5.3-.5h2.5c.3 0 .4-.2.4-.6 0-.9-.7-1.3-1.6-1.3ZM76.5 93v-2.6c0-.9-.4-1.7-1.2-1.7-.8 0-1.4.4-1.7.7-.2.2-.3.2-.4 0-.2-.5-.5-.7-1-.7-1 0-1.7.5-2 .8v-1c-.4.3-.7.5-1.4.7v.3c.5 0 .5.4.5.8V93c0 .3-.3.4-.5.5-.1 0-.3 0-.3.2l.3.1h1.9l.2-.1-.2-.2c-.3-.1-.5-.2-.5-.5v-2.5c0-.4.1-.7.3-.8.3-.3.6-.3 1-.3.5 0 1 .5 1 1.1V93c0 .3-.3.4-.5.5-.2 0-.3 0-.3.2l.2.1h2l.2-.1-.2-.2c-.3-.1-.6-.2-.6-.5v-2.5c0-.4.2-.7.4-.8.3-.3.6-.3 1-.3.5 0 1 .5 1 1.1V93c0 .3-.3.4-.6.5 0 0-.2 0-.2.2l.2.1h2l.2-.1-.3-.2c-.2-.1-.5-.2-.5-.5Zm4.4.5c-.6 0-1-.2-1.2-.3-.2-.3-.2-.7-.2-1v-1.8c0-.5 0-.7.3-.8.3-.2.6-.4 1-.4.5 0 1.6.3 1.6 2.1 0 1.7-1 2.2-1.5 2.2Zm-2.3 2.8c0 .3-.3.4-.5.5-.2 0-.3 0-.3.2h2.6c0-.1-.1-.2-.3-.2-.2-.1-.7-.2-.7-.5v-2.9c.3.3 1 .4 1.3.4 1.5 0 2.7-1.4 2.7-2.8 0-1.2-.8-2.3-2-2.3-.7 0-1.7.6-2 .8v-.1l.1-.7v-.2L78 89v.3c.4.1.6.7.6 1v6Zm7.1-3.3v-7.8l-1.4.5-.1.1v.2c.5 0 .6.4.6.9v6c0 .3-.3.4-.5.5-.1 0-.3 0-.3.2l.3.1h2l.1-.1-.2-.2c-.3-.1-.5-.2-.5-.5Zm5.1.3c-.4 0-.5-.5-.5-1l.1-2.5c0-.6-.4-1.1-1-1.1s-1.4.5-1.8.8c-.3.3-.4.6-.4.9l.9-.3v-.4c.1-.2.5-.4.7-.4.5 0 .8.3.8.7v.8c0 .3 0 .4-.4.5l-1.2.5c-.6.2-.9.6-.9 1 0 .5.5 1 1 1 1 0 1.3-.6 1.5-.6.1 0 .2.6.9.6.4 0 1-.5 1-.6 0 0-.2-.2-.2 0h-.5Zm-2.7-.7c0-.3.2-.6 1.2-1h.1l.1.3v.6l-.1.5c-.2.1-.4.3-.8.3a.6.6 0 0 1-.5-.7Zm5.6 1.2c.8 0 1.4-.6 1.4-.7v-.2c-.3.2-.5.3-1 .3-.4 0-.8-.3-.8-1.2v-2.2c0-.4.1-.4.5-.4H95l.1-.3-.1-.2h-1.4l-.3-.2.1-.5-.2-.2c-.1 0-.6 1-1.3 1.1v.1l.1.2c.4 0 .5 0 .5.2v2.8c0 1 .5 1.4 1.2 1.4Zm4.1-4.8c.5 0 1 .3 1 .8l-.1.3-1 .1h-1l-.1-.2c0-.3.5-1 1.2-1Zm.2-.3a2.5 2.5 0 0 0-2.4 2.5c0 1.6 1 2.6 2 2.6 1.1 0 1.8-.7 1.9-1v-.3h-.2c-.3.5-.9.6-1.2.6-1 0-1.8-1-1.8-2 0-.5.1-.5.3-.5h2.5c.3 0 .5-.2.5-.6 0-.9-.7-1.3-1.6-1.3Zm9-2.3c.2 0 .4-.2.4-.5 0-.6-.8-.7-1.4-.7-1 0-2.6.9-2.6 3.6a1 1 0 0 1-.7.3l-.1.1.2.2h.6v3.4c0 .4-.3.5-.5.6-.2 0-.3 0-.3.2l.2.1h2l.2-.1c0-.1-.1-.2-.3-.2-.2-.1-.5-.2-.5-.6v-3.2s0-.2.5-.2h1.2l.1-.4v-.1h-1.5c-.1 0-.3 0-.3-.3V88c0-1.7.6-2.3 1.3-2.3 1 0 1.1.7 1.4.7Zm2.2 2.3a2.8 2.8 0 0 0-2.7 2.7c0 1.4 1 2.4 2.4 2.4 1.8 0 2.7-1.3 2.7-2.7 0-1.3-1-2.4-2.4-2.4Zm-.2.4c1 0 1.7 1.2 1.7 2.3 0 .5 0 1-.3 1.4-.2.5-.7.7-1.2.7-1 0-1.7-1.2-1.7-2.4 0-.5 0-1.1.4-1.6.3-.3.6-.4 1-.4Zm5 1.4c0-.8.4-1 .8-1l.7.2c.3 0 .5-.4.5-.6 0-.2-.2-.4-.6-.4-.2 0-.7.2-1 .5l-.4.3a21.1 21.1 0 0 0 0-1c-.3.2-.7.5-1.4.7v.3c.5 0 .5.4.5.8V93c0 .3-.2.4-.4.5-.1 0-.3 0-.3.2l.3.1h2l.2-.1c0-.1-.1-.2-.3-.2-.2-.1-.6-.2-.6-.5v-2.4Zm8.6 2.8c-.4 0-.5-.5-.5-1l.1-2.5c0-.6-.4-1.1-1-1.1s-1.4.5-1.8.8c-.3.3-.4.6-.4.9l.9-.3v-.4c.1-.2.5-.4.7-.4.5 0 .8.3.8.7v.8c0 .3 0 .4-.4.5l-1.2.5c-.6.2-.9.6-.9 1 0 .5.5 1 1 1 1 0 1.3-.6 1.5-.6.1 0 .2.6.9.6.4 0 1-.5 1-.6 0 0-.2-.2-.2 0h-.5Zm-2.7-.7c0-.3.2-.6 1.2-1h.1l.1.3v.6l-.1.5c-.2.1-.4.3-.8.3a.6.6 0 0 1-.5-.7Zm6.7-3.3c.7 0 1 .4 1 1.1v2.5c0 .3-.2.4-.4.5-.2 0-.3 0-.3.2l.2.1h2l.2-.1c0-.1-.1-.2-.3-.2-.2-.1-.5-.2-.5-.5v-2.5c0-1-.5-1.7-1.3-1.7s-1.4.3-2 .8v-1a4 4 0 0 1-1.3.7l-.1.1v.2c.5 0 .5.4.5.8V93c0 .3-.2.4-.5.5-.1 0-.2 0-.2.2l.2.1h2l.2-.1-.3-.2c-.2-.1-.5-.2-.5-.5v-2.5c0-.4.2-.7.3-.8.3-.3.7-.3 1.1-.3Zm7.1 4c-.3 0-.4-.5-.4-1v-2.5c0-.6-.4-1.1-1-1.1s-1.4.5-1.7.8c-.3.3-.5.6-.5.9l.9-.3v-.4c.1-.2.5-.4.8-.4.4 0 .7.3.7.7v.8c0 .3 0 .4-.4.5l-1.2.5c-.6.2-.9.6-.9 1 0 .5.6 1 1 1 1 0 1.4-.6 1.5-.6.1 0 .2.6 1 .6.4 0 .9-.5.9-.6 0 0-.1-.2-.2 0h-.5Zm-2.7-.7c0-.3.3-.6 1.2-1h.1c.1 0 .2.1.2.3v.6c0 .3-.1.4-.2.5-.2.1-.4.3-.7.3a.6.6 0 0 1-.6-.7Zm5.2.4v-6l.1-1.7v-.1l-1.5.5v.3c.5 0 .6.4.6.9v6c0 .3-.3.4-.5.5-.1 0-.3 0-.3.2l.3.1h1.9l.2-.1-.2-.2c-.3-.1-.6-.2-.6-.5Zm4.1-4.3c-1.5 0-2.6 1.4-2.6 2.7 0 1.4 1 2.4 2.4 2.4 1.8 0 2.7-1.3 2.7-2.7 0-1.3-1-2.4-2.5-2.4Zm-.2.4c1 0 1.7 1.2 1.7 2.3 0 .5 0 1-.2 1.4-.3.5-.7.7-1.3.7-1 0-1.6-1.2-1.6-2.4 0-.5 0-1.1.4-1.6.2-.3.6-.4 1-.4Zm7.4 1v-.5l.8-.1.1-.2V89H147c-.5-.1-.7-.3-1.2-.3-1.1 0-2.1.7-2.1 1.9 0 .9.8 1.5 1 1.5l-.7.6c-.2.1-.3.3-.3.4 0 .6.7.8 1 1-.1.2-.4.4-.8.6-.2.2-.6.5-.6 1 0 1.1 1.2 1.4 2.2 1.4 1.3 0 2.7-1.2 2.7-2.5 0-1-1.1-1.1-2.7-1.3-.3 0-1.1-.1-1.1-.5l.5-.6c.2.2.6.2.7.2 1 0 2-1 2-2.3Zm-1.9-1c.7 0 1.1.7 1.1 1.4 0 .8-.4 1.5-1 1.5-.7 0-1.2-.8-1.2-1.6 0-.6.4-1.4 1.1-1.4Zm-1.4 6.2c0-.2 0-.4.3-.7l.6-.5h1.4c.4.2 1 .4 1 .9 0 1-.8 1.7-1.8 1.7s-1.5-.6-1.5-1.4Zm10.9-5.2.1-.5.7-.1.1-.2V89h-1.4c-.5-.1-.8-.3-1.3-.3-1.1 0-2.1.7-2.1 1.9 0 .9.8 1.5 1 1.5l-.7.6c-.2.1-.3.3-.3.4 0 .6.7.8 1 1 0 .2-.4.4-.8.6-.2.2-.5.5-.5 1 0 1.1 1.2 1.4 2.2 1.4 1.2 0 2.6-1.2 2.6-2.5 0-1-1.1-1.1-2.6-1.3-.4 0-1.2-.1-1.2-.5l.5-.6c.2.2.6.2.7.2 1 0 2-1 2-2.3Zm-1.9-1c.7 0 1.2.7 1.2 1.4 0 .8-.5 1.5-1 1.5-.8 0-1.2-.8-1.2-1.6 0-.6.3-1.4 1-1.4Zm-1.4 6.2.3-.7.6-.5h1.5c.3.2 1 .4 1 .9 0 1-1 1.7-1.9 1.7-1 0-1.5-.6-1.5-1.4Zm8.4-2c-.4 0-.5-.5-.5-1v-2.5c0-.6-.3-1.1-.9-1.1-.6 0-1.4.5-1.8.8-.3.3-.5.6-.5.9h.1l.9-.3v-.4c0-.2.4-.4.7-.4.5 0 .7.3.7.7v.8c0 .3 0 .4-.3.5l-1.3.5c-.5.2-.8.6-.8 1 0 .5.5 1 1 1 1 0 1.3-.6 1.5-.6 0 0 .2.6.9.6.4 0 1-.5 1-.6 0 0-.2-.2-.3 0h-.4Zm-2.8-.7c0-.3.3-.6 1.2-1h.2l.1.3v.6c0 .3 0 .4-.2.5-.2.1-.4.3-.7.3a.6.6 0 0 1-.6-.7Zm11.7.4v-2.6c0-.9-.4-1.7-1.2-1.7-.8 0-1.4.4-1.7.7-.2.2-.3.2-.4 0-.2-.5-.5-.7-1-.7-1 0-1.7.5-2 .8v-1c-.4.3-.7.5-1.4.7v.3c.5 0 .5.4.5.8V93c0 .3-.3.4-.5.5-.1 0-.3 0-.3.2l.3.1h2l.1-.1-.2-.2c-.3-.1-.5-.2-.5-.5v-2.5c0-.4.1-.7.3-.8.3-.3.6-.3 1-.3.5 0 1 .5 1 1.1V93c0 .3-.3.4-.5.5-.2 0-.3 0-.3.2l.2.1h2l.2-.1-.2-.2c-.3-.1-.6-.2-.6-.5v-2.5c0-.4.2-.7.4-.8.3-.3.6-.3 1-.3.5 0 1 .5 1 1.1V93c0 .3-.3.4-.6.5 0 0-.2 0-.2.2l.2.1h2l.2-.1c0-.1-.1-.2-.3-.2-.2-.1-.5-.2-.5-.5Zm3.6-4c.5 0 1 .3 1 .8l-.1.3-.9.1h-1c-.1 0-.2 0-.2-.2 0-.3.6-1 1.2-1Zm.2-.3c-1.3 0-2.4 1.2-2.4 2.5 0 1.6 1 2.6 2 2.6 1.2 0 1.8-.7 2-1l-.1-.3h-.2c-.3.5-.8.6-1.1.6-1 0-1.8-1-1.8-2 0-.5 0-.5.3-.5h2.5c.3 0 .4-.2.4-.6 0-.9-.7-1.3-1.6-1.3Zm4.1.3c.4 0 .7.4.7.7l.4.3.1-.1c0-.3 0-.8-.2-1-.1 0-.4-.2-.9-.2-1.2 0-1.6.7-1.6 1.4 0 .6.6 1 1.1 1.5.6.3 1 .6 1 1 0 .5-.3.9-.9.9-.5 0-1-.5-1.1-.9h-.4c0 .3 0 .6.2.8 0 .2.6.4 1.2.4 1.4 0 1.8-.6 1.8-1.4 0-.8-.8-1.3-1.2-1.5-.4-.3-1-.6-1-1.1 0-.5.3-.8.8-.8Zm2.2 6.4c.6 0 1.7-.8 1.7-2 0-.7-.4-1.1-1-1.1-.4 0-.7.2-.7.5s.2.5.6.5c.3 0 .5.3.5.5 0 .9-.7 1.2-1.2 1.3l-.2.2.3.1ZM16.1 104c.2-.4.4-.8.6-.9.2 0 .3 0 .3-.2l-.2-.1H15l-.2.1.3.2c.2 0 .4.3.4.6v.4l-1 2.1c0 .2 0 .2-.2 0l-.9-2.3v-.3c0-.3.2-.4.4-.5.1 0 .2 0 .2-.2l-.2-.1H12l-.2.1.2.2c.3.1.6.4.6.9v.3l-.8 2c-.1.1-.1.1-.2 0l-1-2.4v-.3c0-.2.1-.4.3-.5.1 0 .2 0 .2-.2l-.2-.1H9l-.2.1c0 .1.1.2.3.2.2.1.5.3.6.6l1.7 4.2h.1l1.4-3.1c0-.2 0-.2.1 0l1.3 3v.1h.2l1.6-4Zm1.6-3.1c0 .3.3.6.6.6.4 0 .7-.3.7-.6 0-.4-.3-.6-.7-.6-.3 0-.6.2-.6.6Zm1.2 1.6c-.1 0-.6.4-1.4.6l-.1.2v.1c.5.1.6.5.6 1v2.5c0 .3-.2.4-.5.5-.1 0-.3 0-.3.2l.3.1h2l.2-.1-.3-.2c-.2-.1-.5-.2-.5-.5v-4.4Zm3.3 5.3c.7 0 1.4-.6 1.4-.7 0-.1 0-.2-.2-.2-.1.2-.4.3-.9.3-.3 0-.7-.3-.7-1.2v-2.2c0-.4 0-.4.4-.4h1.2l.1-.3v-.2H22c-.2 0-.4-.1-.3-.2v-.5c0-.1 0-.2-.2-.2 0 0-.6 1-1.2 1.1v.3c.4 0 .5 0 .5.2v2.8c0 1 .5 1.4 1.3 1.4Zm6.6-1v-2.5c0-1-.6-1.6-1.4-1.6-.7 0-1.4.5-1.8.7v-4.2l-1.5.5v.3c.5 0 .6.4.6.9v6c0 .3-.3.4-.5.5-.2 0-.3 0-.3.2l.2.1h2l.2-.1-.3-.2c-.3-.1-.5-.2-.5-.5v-2.5c0-.4.1-.6.3-.8a2 2 0 0 1 1-.3c.6 0 1.2.5 1.2 1.1v2.4c0 .4-.3.5-.5.6-.1 0-.3 0-.3.2l.3.1h1.9l.2-.1-.3-.2c-.2-.1-.5-.2-.5-.6Zm6.8.7c-.8 0-1.6-.6-1.6-1.4v-1.5c0-.6 0-.8.2-1 .3-.3.9-.4 1.2-.4 1.2 0 1.7 1.2 1.7 2.1 0 1.2-.6 2.2-1.5 2.2Zm-2.5-1.1v1.2l.2.1.3-.2c.2 0 1 .3 1.8.3 1.8 0 2.6-1.3 2.6-2.7 0-1.3-1-2.4-2.2-2.4a3 3 0 0 0-1.7.7l-.1-.4v-3.8l-1.4.5-.1.1v.2c.5 0 .6.4.6.9v5.5Zm10.5-3.7-1.5.2s-.3 0-.3.2l.3.2c.2 0 .7 0 .7.6v2.2c0 .5-.3.7-.5.9-.3.2-.6.2-1 .2a1 1 0 0 1-1-1v-3.4l-.1-.1-1.2.2c-.1 0-.2 0-.2.2l.1.2c.4.1.5.3.5.7v2.4c0 1 .6 1.4 1.4 1.4.8 0 1.4-.2 2-.8v.8h.3l1.4-.4.1-.2-.2-.1H44c-.2 0-.2-.3-.2-.8v-3.4c.1-.1 0-.2 0-.2Zm1.9-1.8c0 .3.3.6.6.6.4 0 .7-.3.7-.6 0-.4-.3-.6-.7-.6-.3 0-.6.2-.6.6Zm1.2 1.6c-.1 0-.6.4-1.4.6l-.1.2v.1c.5.1.6.5.6 1v2.5c0 .3-.2.4-.5.5-.1 0-.3 0-.3.2l.3.1h2l.2-.1-.3-.2c-.3-.1-.5-.2-.5-.5v-4.4Zm2.8 4.5v-6l.1-1.7v-.1l-1.5.5v.3c.5 0 .6.4.6.9v6c0 .3-.3.4-.5.5-.1 0-.3 0-.3.2l.3.1H50l.2-.1-.2-.2c-.3-.1-.6-.2-.6-.5Zm3.3.8c.8 0 1.4-.6 1.4-.7v-.2c-.3.2-.5.3-1 .3-.4 0-.8-.3-.8-1.2v-2.2c0-.4.1-.4.5-.4h1.2l.1-.3-.1-.2h-1.4l-.3-.2.1-.5-.2-.2c-.1 0-.6 1-1.3 1.1v.1l.1.2c.4 0 .5 0 .5.2v2.8c0 1 .5 1.4 1.2 1.4Zm2-2.2c.8 0 1.5-.2 2.2-.3.2 0 .3-.3.3-.6l-.1-.1c-.8 0-1.6.2-2.3.3l-.2.6v.1Zm3.6-4.7c0 .3.3.6.6.6.4 0 .6-.3.6-.6 0-.4-.2-.6-.6-.6-.3 0-.6.2-.6.6Zm1.2 1.6c-.1 0-.7.4-1.5.6v.3c.4.1.6.5.6 1v2.5c0 .3-.3.4-.5.5-.1 0-.3 0-.3.2l.3.1H60l.2-.1-.2-.2c-.3-.1-.6-.2-.6-.5v-2.8l.2-1.6h-.1Zm4.4.8c.6 0 1 .4 1 1.1v2.5c0 .3-.3.4-.5.5-.2 0-.3 0-.3.2l.2.1h2l.2-.1c0-.1-.1-.2-.3-.2-.2-.1-.5-.2-.5-.5v-2.5c0-1-.5-1.7-1.3-1.7s-1.4.3-2 .8v-1a4 4 0 0 1-1.3.7l-.1.1v.2c.5 0 .5.4.5.8v2.6c0 .3-.2.4-.5.5-.1 0-.2 0-.2.2l.2.1h2l.2-.1-.3-.2c-.2-.1-.5-.2-.5-.5v-2.5c0-.4.2-.7.3-.8.3-.3.7-.3 1.1-.3Zm7.6 4.5c.7 0 1.4-.6 1.4-.7l-.1-.2c-.2.2-.5.3-1 .3-.3 0-.7-.3-.7-1.2v-2.2c0-.4 0-.4.4-.4h1.2l.1-.3v-.2h-1.4c-.2 0-.4-.1-.3-.2v-.5l-.1-.2c-.2 0-.7 1-1.3 1.1v.3c.4 0 .5 0 .5.2v2.8c0 1 .5 1.4 1.3 1.4Zm4.5-5.1c-1.5 0-2.6 1.4-2.6 2.7 0 1.4 1 2.4 2.4 2.4 1.8 0 2.7-1.3 2.7-2.7 0-1.3-1-2.4-2.5-2.4Zm-.2.4c1 0 1.7 1.2 1.7 2.3 0 .5 0 1-.2 1.4-.3.5-.7.7-1.3.7-1 0-1.6-1.2-1.6-2.4 0-.5 0-1.1.4-1.6.2-.3.6-.4 1-.4Zm6.1-.4c-1.4 0-2.6 1.4-2.6 2.7 0 1.4 1 2.4 2.4 2.4 1.8 0 2.7-1.3 2.7-2.7 0-1.3-1-2.4-2.4-2.4Zm-.1.4c1 0 1.6 1.2 1.6 2.3 0 .5 0 1-.2 1.4-.2.5-.7.7-1.2.7-1 0-1.7-1.2-1.7-2.4 0-.5 0-1.1.4-1.6.3-.3.6-.4 1-.4Zm4.9 3.9v-7.8l-1.4.5v.3c.4 0 .6.4.6.9v6c0 .3-.3.4-.5.5-.2 0-.3 0-.3.2l.2.1h2l.2-.1c0-.1-.1-.2-.3-.2-.2-.1-.5-.2-.5-.5Zm3.2-4c.3 0 .7.4.7.7l.4.3v-.1l-.1-1c-.1 0-.4-.2-1-.2-1.1 0-1.5.7-1.5 1.4 0 .6.5 1 1.1 1.5.5.3 1 .6 1 1 0 .5-.3.9-1 .9-.4 0-1-.5-1-.9h-.4l.1.8c.1.2.7.4 1.3.4 1.3 0 1.7-.6 1.7-1.4 0-.8-.7-1.3-1.1-1.5-.4-.3-1-.6-1-1.1 0-.5.3-.8.7-.8Zm8.2 4.3c-.3 0-.4-.5-.4-1v-2.5c0-.6-.4-1.1-1-1.1s-1.4.5-1.7.8c-.3.3-.5.6-.5.9l1-.3-.1-.2v-.2c.1-.2.5-.4.8-.4.4 0 .7.3.7.7v.8c0 .3 0 .4-.4.5l-1.2.5c-.6.2-.9.6-.9 1 0 .5.6 1 1 1 1 0 1.4-.6 1.5-.6.1 0 .2.6 1 .6.4 0 .9-.5.9-.6 0 0-.1-.2-.2 0h-.5Zm-2.7-.7c0-.3.3-.6 1.2-1h.2v.9l-.1.5c-.2.1-.4.3-.7.3a.6.6 0 0 1-.6-.7Zm6.7-3.3c.7 0 1.1.4 1.1 1.1v2.5c0 .3-.3.4-.5.5-.1 0-.3 0-.3.2l.3.1h2l.2-.1-.3-.2c-.3-.1-.5-.2-.5-.5v-2.5c0-1-.6-1.7-1.4-1.7a3 3 0 0 0-2 .8v-.1l.1-.8v-.1l-1.4.7v.3c.4 0 .5.4.5.8v2.6c0 .3-.3.4-.5.5-.2 0-.3 0-.3.2l.2.1h2l.2-.1c0-.1-.1-.2-.3-.2-.2-.1-.5-.2-.5-.5v-2.5c0-.4.2-.7.3-.8.3-.3.7-.3 1.1-.3Zm5.8-.2c1 0 1.5.8 1.5 1.5v1.6c0 .6-.5 1-1.2 1-.5 0-1.8-.3-1.8-2.1 0-1.6 1-2 1.5-2Zm1.3-.2-1-.2a2.6 2.6 0 0 0-2.7 2.7c0 1.2.9 2.4 2.3 2.4.8 0 1.3-.5 1.5-.8v.8h.3l1.4-.4s.2 0 .2-.2l-.2-.1h-.6c-.1 0-.2-.3-.2-.8v-7l-1.5.4v.3c.4 0 .7.2.7.9v1.9l-.1.3-.1-.2Zm7.1.2c1 0 1.5.8 1.5 1.5v1.6c0 .6-.4 1-1.1 1-.5 0-1.8-.3-1.8-2.1 0-1.6 1-2 1.4-2Zm1.4-.2-1-.2a2.6 2.6 0 0 0-2.7 2.7c0 1.2.9 2.4 2.2 2.4a2 2 0 0 0 1.6-.8v.8h.3l1.4-.4.1-.2-.1-.1h-.6c-.2 0-.2-.3-.2-.8v-7l-1.5.4v.3c.4 0 .6.2.6.9v2.1l-.1-.2Zm2.8-2c0 .3.2.6.6.6.3 0 .6-.3.6-.6 0-.4-.3-.6-.6-.6-.4 0-.6.2-.6.6Zm1.1 1.6s-.6.4-1.4.6l-.1.2v.1c.5.1.7.5.7 1v2.5c0 .3-.3.4-.6.5-.1 0-.2 0-.2.2l.2.1h2l.2-.1-.3-.2c-.2-.1-.5-.2-.5-.5v-2.8l.1-1.6Zm3.1.5c.4 0 .8.4.8.7l.4.3v-.1l-.1-1-1-.2c-1.1 0-1.6.7-1.6 1.4 0 .6.6 1 1.2 1.5.5.3 1 .6 1 1 0 .5-.4.9-1 .9-.4 0-1-.5-1-.9h-.4l.1.8c.1.2.7.4 1.3.4 1.3 0 1.7-.6 1.7-1.4 0-.8-.8-1.3-1.1-1.5-.4-.3-1-.6-1-1.1 0-.5.3-.8.7-.8Zm5.1 4.5c-.6 0-1-.2-1.1-.3-.3-.3-.3-.7-.3-1v-1.8c0-.5 0-.7.3-.8.3-.2.6-.4 1-.4.5 0 1.6.3 1.6 2.1 0 1.7-1 2.2-1.5 2.2Zm-2.3 2.8c0 .3-.3.4-.5.5-.1 0-.3 0-.3.2h2.6c0-.1-.1-.2-.3-.2-.2-.1-.7-.2-.7-.5v-2.2l.1-.7c.2.3.9.4 1.2.4 1.5 0 2.7-1.4 2.7-2.8 0-1.2-.7-2.3-2-2.3-.7 0-1.7.6-2 .8v-.1l.1-.7v-.2c-.4.2-.8.4-1.5.5v.3c.5.1.6.7.6 1v6Zm7.1-3.3v-7.8l-1.4.5-.1.1v.2c.5 0 .6.4.6.9v6c0 .3-.2.4-.5.5-.1 0-.3 0-.3.2l.3.1h2l.2-.1-.3-.2c-.2-.1-.5-.2-.5-.5Zm5.1.3c-.3 0-.4-.5-.4-1v-2.5c0-.6-.4-1.1-1-1.1s-1.4.5-1.7.8c-.3.3-.5.6-.5.9l.9-.3v-.4c.1-.2.5-.4.8-.4.4 0 .7.3.7.7v.8c0 .3 0 .4-.4.5l-1.2.5c-.6.2-.9.6-.9 1 0 .5.6 1 1 1 1 0 1.4-.6 1.5-.6.1 0 .2.6 1 .6.4 0 .9-.5.9-.6 0 0-.1-.2-.2 0h-.5Zm-2.7-.7c0-.3.3-.6 1.2-1h.1c.1 0 .2.1.2.3v.6c0 .3-.1.4-.2.5-.2.1-.4.3-.7.3a.6.6 0 0 1-.6-.7Zm3.5 4c0 .3.4.5.7.5.3 0 .6-.2.7-.5l1.2-2.8 1.6-3.9c.2-.4.5-.7.7-.8.2 0 .3 0 .3-.2l-.2-.1H144l-.2.1c0 .2.2.3.3.3.2 0 .2.2.2.5v.4l-.9 2.2c0 .1 0 .1-.1 0l-1-2.4v-.3c0-.2 0-.4.2-.4.1 0 .3-.1.3-.3l-.2-.1h-1.8l-.3.1.3.2c.3.1.4.3.6.6l1.4 3.5v.7l-1.1 2.3-.3.2-.4-.1c-.3 0-.4.2-.4.3Zm11.5-6.8c.2 0 .5-.2.5-.4v-.1c-.4-.5-1-.6-1.5-.6-1.5 0-2.5 1.3-2.5 2.8 0 1.2.8 2.3 2 2.3 1 0 2-.6 2-1l-.1-.3-.1.1c-.4.4-.6.6-1.1.6-1.2 0-2-1.1-2-2.3 0-.8.5-1.8 1.4-1.8.6 0 .7.2 1.1.6l.3.1Zm3.6-1.1c-1.5 0-2.6 1.4-2.6 2.7 0 1.4 1 2.4 2.4 2.4 1.8 0 2.7-1.3 2.7-2.7 0-1.3-1.1-2.4-2.5-2.4Zm-.2.4c1 0 1.7 1.2 1.7 2.3 0 .5 0 1-.2 1.4-.3.5-.7.7-1.3.7-1 0-1.6-1.2-1.6-2.4 0-.5 0-1.1.4-1.6.2-.3.6-.4 1-.4Zm6.5.2c.6 0 1 .4 1 1.1v2.5c0 .3-.2.4-.5.5-.1 0-.3 0-.3.2l.3.1h2l.2-.1-.3-.2c-.3-.1-.5-.2-.5-.5v-2.5c0-1-.6-1.7-1.4-1.7-.7 0-1.4.3-2 .8v-.1l.1-.8v-.1l-1.4.7v.3c.4 0 .5.4.5.8v2.6c0 .3-.3.4-.5.5-.2 0-.3 0-.3.2l.2.1h2l.2-.1c0-.1-.1-.2-.3-.2-.2-.1-.5-.2-.5-.5v-2.5c0-.4.2-.7.3-.8.3-.3.7-.3 1.2-.3Zm5.2 4.5c.7 0 1.4-.6 1.4-.7l-.1-.2c-.2.2-.4.3-1 .3-.3 0-.7-.3-.7-1.2v-2.2c0-.4 0-.4.5-.4h1.2v-.5H167c-.2 0-.3-.1-.3-.2l.1-.5-.2-.2c-.1 0-.6 1-1.3 1.1v.1l.1.2c.4 0 .5 0 .5.2v2.8c0 1 .5 1.4 1.2 1.4Zm3.4-3.3c0-.8.5-1 .9-1l.7.2c.2 0 .5-.4.5-.6 0-.2-.3-.4-.6-.4s-.8.2-1.1.5l-.3.3a21.1 21.1 0 0 0 0-1l-1.4.7-.1.1.1.2c.4 0 .5.4.5.8v2.6c0 .3-.2.4-.5.5-.1 0-.2 0-.2.2l.2.1h2l.3-.1-.3-.2c-.3-.1-.7-.2-.7-.5v-2.4Zm5.2-1.8a2.8 2.8 0 0 0-2.7 2.7c0 1.4 1 2.4 2.4 2.4 1.8 0 2.7-1.3 2.7-2.7 0-1.3-1-2.4-2.4-2.4Zm-.2.4c1 0 1.7 1.2 1.7 2.3 0 .5-.1 1-.3 1.4-.2.5-.7.7-1.2.7-1 0-1.7-1.2-1.7-2.4 0-.5 0-1.1.4-1.6.3-.3.6-.4 1-.4Zm4.9 3.9v-6l.1-1.7v-.1h-.1l-1.4.5v.3c.4 0 .6.4.6.9v6c0 .3-.3.4-.5.5-.2 0-.3 0-.3.2l.2.1h2l.2-.1c0-.1-.1-.2-.3-.2-.2-.1-.5-.2-.5-.5Zm3.1-4c.4 0 .8.4.8.7l.4.3v-.1l-.1-1c-.1 0-.4-.2-1-.2-1.1 0-1.5.7-1.5 1.4 0 .6.5 1 1.1 1.5.6.3 1 .6 1 1 0 .5-.3.9-.9.9-.5 0-1-.5-1.1-.9h-.4c0 .3 0 .6.2.8 0 .2.6.4 1.2.4 1.4 0 1.8-.6 1.8-1.4 0-.8-.8-1.3-1.2-1.5-.4-.3-1-.6-1-1.1 0-.5.3-.8.7-.8Z" fill-rule="nonzero"/>
+					</g>
+
+					<path class="svg-basic-stroke" d="m6.3 80h182"/>
+				</svg>
+			</div>
+
+			<div id="content">
+				<div id="menu">
+					<h1>Menu</h1>
+
+					<fieldset id="menu-controls">
+						<legend>Options</legend>
+
+						<input id="menu-close" name="menu-control" type="radio" value="close"/>
+
+						<label for="menu-close">
+							<svg class="svg-menu-tab-icon" xmlns="http://www.w3.org/2000/svg" xml:space="preserve">
+								<use href="#icon-close-menu"/>
+							</svg>
+						</label>
+
+						<input id="menu-content-contents" name="menu-control" type="radio" value="contents"/>
+
+						<label for="menu-content-contents">
+							<svg class="svg-menu-tab-icon" xmlns="http://www.w3.org/2000/svg" xml:space="preserve">
+								<use href="#icon-contents"/>
+							</svg>
+						</label>
+
+						<input id="menu-content-settings" name="menu-control" type="radio" value="settings"/>
+
+						<label for="menu-content-settings">
+							<svg class="svg-menu-tab-icon" xmlns="http://www.w3.org/2000/svg" xml:space="preserve">
+								<use href="#icon-settings"/>
+							</svg>
+						</label>
+
+						<input id="menu-content-tools" name="menu-control" type="radio" value="tools"/>
+
+						<label for="menu-content-tools">
+							<svg class="svg-menu-tab-icon" xmlns="http://www.w3.org/2000/svg" xml:space="preserve">
+								<use href="#icon-tools"/>
+							</svg>
+						</label>
+					</fieldset>
+
+					<nav id="menu-contents" class="menu-tab">
+						<h2>Contents</h2>
+
+						<ol>
+							<li><a href="#introduction">Introduction</a></li>
+
+							<li><a href="#metadata-explainer">Metadata</a></li>
+
+							<li><a href="#styles-explainer">Styles</a></li>
+
+							<li><a href="#menu-explainer">The Menu</a>
+								<ol>
+									<li><a href="#contents-tab-explainer">Contents</a></li>
+
+									<li><a href="#settings-tab-explainer">Settings</a></li>
+
+									<li><a href="#tools-tab-explainer">Tools</a></li>
+								</ol>
+							</li>
+
+							<li><a href="#responsiveness-explainer">Responsiveness</a></li>
+
+							<li><a href="#oracle-grids-explainer">Oracle Grids</a>
+								<ol>
+									<li><a href="#oracle-suits-ranks">Suits-then-ranks</a></li>
+
+									<li><a href="#oracle-ranks-suits">Ranks-then-suits</a></li>
+
+									<li><a href="#oracle-ranks-only">Ranks-only</a></li>
+								</ol>
+							</li>
+
+							<li><a href="#colophon">Colophon</a></li>
+						</ol>
+					</nav>
+
+					<div id="menu-settings" class="menu-tab">
+						<h2>Settings</h2>
+
+						<noscript>Javascript is currently disabled in your browser, so these controls will not work.</noscript>
+
+						<fieldset>
+							<legend>Theme:</legend>
+
+							<input id="theme-light" name="theme-control" type="radio" value="light"/>
+
+							<label for="theme-light">light</label>
+
+							<input id="theme-dark" name="theme-control" type="radio" value="dark"/>
+
+							<label for="theme-dark">dark</label>
+						</fieldset>
+
+						<fieldset>
+							<legend>Text width:</legend>
+
+							<input id="width-thin" name="width-control" type="radio" value="thin"/>
+
+							<label for="width-thin">thin</label>
+
+							<input id="width-default" name="width-control" type="radio" value="default"/>
+
+							<label for="width-default">default</label>
+
+							<input id="width-wide" name="width-control" type="radio" value="wide"/>
+
+							<label for="width-wide">wide</label>
+						</fieldset>
+
+						<fieldset>
+							<legend>Font:</legend>
+
+							<input id="font-serif" name="font-control" type="radio" value="serif"/>
+
+							<label for="font-serif">serif</label>
+
+							<input id="font-sans" name="font-control" type="radio" value="sans"/>
+
+							<label for="font-sans">sans-serif</label>
+						</fieldset>
+
+						<fieldset>
+							<legend>Italics:</legend>
+
+							<input id="italics-italic" name="italics-control" type="radio" value="italic"/>
+
+							<label for="italics-italic">italicised</label>
+
+							<input id="italics-asterisk" name="italics-control" type="radio" value="asterisk"/>
+
+							<label for="italics-asterisk">asterisks</label>
+
+							<input id="italics-slash" name="italics-control" type="radio" value="slash"/>
+
+							<label for="italics-slash">slashes</label>
+
+							<input id="italics-highlight" name="italics-control" type="radio" value="highlight"/>
+
+							<label for="italics-highlight">highlights</label>
+
+							<input id="italics-none" name="italics-control" type="radio" value="none"/>
+
+							<label for="italics-none">none</label>
+						</fieldset>
+					</div>
+
+					<div id="menu-tools" class="menu-tab">
+						<noscript>Javascript is currently disabled in your browser, so these tools will not work.</noscript>
+
+						<h2>Dice</h2>
+
+						<div class="tool-box">
+							<button id="dice-roll-button">Roll</button>
+
+							<div id="dice-roll" class="game-piece-position"></div>
+
+							<button id="dice-reset-button">Reset</button>
+						</div>
+
+						<h2>Cards</h2>
+
+						<div class="tool-box">
+							<button id="card-draw-button">Draw</button>
+
+							<div id="new-card" class="game-piece-position"></div>
+
+							<button id="reshuffle-button">Reshuffle</button>
+						</div>
+					</div>
+				</div>
+
+				<main>
+					<header>
+						<h1 id="title">Write Skyscrapers</h1>
+
+						<p>an <abbr title="HyperText Markup Language">HTML</abbr> template for analog games,<br/>with built-in tools and display controls</p>
+
+						<p>by <a href="http://speakthesky.com">Speak the Sky</a></p>
+
+						<p>
+							 <svg class="svg-logo" xmlns="http://www.w3.org/2000/svg" xml:space="preserve">
+							 	<use href="#StS-logo"/>
+							 </svg>
+						</p>
+					</header>
+
+					<hr class="section-spacer"/>
+
+					<section>
+						<h2 id="introduction">Introduction</h2>
+
+						<p>This <abbr>HTML</abbr> file is a template you can edit in an app like Notepad, or BBEdit, or something more complicated. This template is free to use with or without credit (though credit to me under the name 'Speak the Sky', with or without a link to <a href="https://speakthesky.itch.io/write-skyscrapers">where the template can be found online</a>, is appreciated). If you use, or even build on this template, please drop a link to your work in the comments on the itch page!</p>
+
+						<p>To use this template to build a game file, you will need to write <abbr>HTML</abbr> (for the text's structure) and a little bit of <abbr title="Cascading Style Sheets">CSS</abbr> (for the styling). Writing <abbr>HTML</abbr> and <abbr>CSS</abbr> is not that hard, actually, even if it's unfamiliar and maybe a little daunting at first. In fact, it's pretty easy once you get the hang of it, especially if you're doing straightforward static pages like this one. Anyway, I'd recommend the following 3 resources for beginners:</p>
+
+						<ul>
+							<li>the <a href="https://www.w3schools.com/html/"><abbr title="World Wide Web Consortium">W3C tutorials</a>, a beginner-friendly set of tutorials and references for how <abbr>HTML</abbr> works, what kinds of tags there are, how to write a document, etc., plus tutorials on <abbr>CSS</abbr> (for styling your file) and JavaScript (for adding/editing functionality like the dice roller, card deck, and menu tabs).</li>
+
+							<li>the <a href="https://developer.mozilla.org/en-US/"><abbr title="Mozilla Development Network">MDN</abbr> web docs</a>, a little bit more general, technical, and up-to-date (sometimes) than the <abbr>W3C</abbr> tutorials, plus it has examples in-line.</li>
+
+							<li>search engines, where you can sift through irrelevant bullshit on Stack Exchange or wherever and probably find an answer for any question you have (just pay attention to when the answers were written, since they may've become obsolete).</li>
+						</ul>
+
+						<p>You might think "why bother?" and the reason you might wanna bother is that properly-written <abbr>HTML</abbr> supported with <abbr>CSS</abbr> and basic <abbr title="Javascript">JS</abbr> is highly flexible, accessible, customisable, and functional, and can provide experiences you can't get with other formats.</p>
+
+						<p><strong>Caveat 1</strong>: I haven't properly edited this or anything. The text in this file is a very rough guide to the underlying code and not any kinda tutorial on how to write <abbr>HTML</abbr>, <abbr>CSS</abbr>, or <abbr>JS</abbr>.</p>
+
+						<p><strong>Caveat 2</strong>: This file doesn't have every possible feature it could have, or even every feature that'd be nice to have while still keeping it relatively lo-fi (e.g. sticky section headers or breadcrumbs that help identify where you are at any point in the text). If you wanna build on it by adding or refining features then please share your work!</p>
+
+						<p><strong>Caveat 3</strong>: You can't write <em>any</em> kind of <abbr>HTML</abbr> in this template and expect it to look flawless with a 100% guarantee. Look at how the underlying <abbr>HTML</abbr>'s written in this file to see how I wrote it, and what the <abbr>CSS</abbr> is written to style. That said, the stuff you'll need to use for your game text is pretty straightforward, mostly <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;p&gt;</code>, and <code>&lt;hr/&gt;</code> elements and some text-formatting elements like <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, and <code>&lt;span&gt;</code>s with classes.</p>
+
+						<p><strong>Disclaimer:</strong> I won't help you with general coding questions. I'm not tech support for your browser or a teacher for your programming education.</p>
+					</section>
+
+					<hr class="section-spacer"/>
+
+					<section>
+						<h2 id="metadata-explainer">Metadata</h2>
+
+						<p>Don't forget to edit your game file's metadata. That means the following data near the top of the <code>&lt;head&gt;</code> element near the start of the file (should be one of the first things you see when opening it):
+
+						<ul>
+							<li>title in the <code>&lt;title&gt;</code> tags</li>
+
+							<li>writer name in the <code>content</code> attribute of the <code>&lt;meta name="writer"/&gt;</code> tag</li>
+
+							<li>description in the <code>content</code> attribute of the <code>&lt;meta name="description"/&gt;</code> tag</li>
+						</ul>
+
+						<p>If you don't change these then they'll either be empty (if you're using the base file) or the same as this file, which probably isn't what you want (especially considering that the <code>&lt;title&gt;</code> text will appear in the browser tab when someone opens your file).</p>
+					</section>
+
+					<hr class="section-spacer"/>
+
+					<section>
+						<h2 id="styles-explainer">Styles</h2>
+
+						<p>The file comes with a range of stylistic rules, which you can find between the <code>&lt;style&gt;</code> tags in the <abbr>HTML</abbr> head. Some of these are pretty straightforward, like the headings, colours, and text properties. Others, like the oracle-grid styles (see examples), are little more complex. The rules are split into a few categories:</p>
+
+						<ul>
+							<li><strong>variables:</strong> colours, some text properties, sizes of basic structural elements like the main text column, etc. Changes made here will ripple through the whole file.</li>
+
+							<li><strong>fonts:</strong> currently, only the font-face declaration for the custom version of Dicier, embedded in base64-encoded form.</li>
+
+							<li><strong>basic structure:</strong> mostly for the size and position of the structural elements of the file like the cover, main content, header and footer, etc.</li>
+
+							<li><strong>menu:</strong> for the menu controls and menu tab contents.</li>
+
+							<li><strong>text:</strong> for headings, regular text, oracles, horizontal rules (under "section decoration"), italics, game icons, etc.</li>
+
+							<li><strong>media:</strong> in this file, this is only for the <abbr>SVG</abbr> menu tab icons and logo, but you could put other media tag <abbr>CSS</abbr> here (for images, video, audio, etc.).</li>
+
+							<li><strong>display:</strong> for changing the layout when the viewport is under 800px and 500px wide.</li>
+
+							<li><strong>themes:</strong> for the light and dark themes, including a few rules for different screen sizes.</li>
+
+							<li><strong>theme transition:</strong> for transitions between themes (however, these rules will cover <em>all</em> transitions, not just theme transitions).</li>
+
+							<li><strong>reset theme side-effects:</strong> undoes some potentially less-legible combinations of text and background colour, among a couple other things.</li>
+						</ul>
+					</section>
+
+					<hr class="section-spacer"/>
+
+					<section>
+						<h2 id="menu-explainer">The Menu</h2>
+
+						<p>To the left of the text (or at the bottom on narrower screens) you'll find a menu bar with a few tabs (and the option to close all tabs). This menu is sticky, that is, it stays in the same place on the page as long as you're scrolling in its vertical space (basically, it won't appear in the game cover area at the top of the file). By default, the only thing visible is just the menu tab options (I've made <abbr title="Scalable Vector Graphics">SVG</abbr> icons, but you could also use text). Clicking a tab's icon brings up that tab; clicking the X closes all the tabs.</p>
+
+						<p>In this file, the menu contains three tabs:</p>
+
+						<ul>
+							<li>Contents <svg class="svg-menu-tab-icon" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"><use href="#icon-contents"/></svg></li>
+
+							<li>Settings <svg class="svg-menu-tab-icon" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"><use href="#icon-settings"/></svg></li>
+
+							<li>Tools <svg class="svg-menu-tab-icon" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"><use href="#icon-tools"/></svg></li>
+						</ul>
+
+						<p>To remove a tab, you'll need to delete the following:</p>
+
+						<ul>
+							<li>its input and label at the start of the menu div</li>
+
+							<li>the menu tab itself further down the menu div</li>
+
+							<li>the tab name from the menuSwitch function in the script section at the end of the <abbr>HTML</abbr> body</li>
+						</ul>
+
+						<p>To add a new tab, do the opposite. Whether adding or removing tags, you'll probably also want to change the "<code>#menu-controls label</code>" width property in the tablet (<code>max-width: 799px</code>) media query as well. This basically controls how wide the menu tab buttons are in tablet and mobile view, and by default is set to 25% or one quarter, because by default there are 3 tabs and the close-tabs button.</p>
+
+						<hr class="subsection-spacer"/>
+
+						<h3 id="contents-tab-explainer">Menu tab: Contents</h3>
+
+						<p>The Contents tab has a list of navigation links leading to some, or maybe all major sections of your file, with sub-lists leading to sub-sections.</p>
+
+						<p>To set these up in your own text, you'll need to add id attributes to the <abbr>HTML</abbr> elements you want to link to from the contents tab. You can see how it's done by looking at this file's <abbr>HTML</abbr> (check out the section headings and compare them to the <code>&lt;nav&gt;</code> element containing the contents list). You can link to anything, not just heading elements, and sections or subsections of your text don't necessarily have to have these links.</p>
+
+						<hr class="subsection-spacer"/>
+
+						<h3 id="settings-tab-explainer">Menu tab: Settings</h3>
+
+						<p>The Settings tab has controls for changing how the file displays: colour scheme, font type, text width, and italics style. You can switch to a new setting for a given control by clicking or focusing on that setting.</p>
+
+						<p>This file comes with 2 colour schemes (light and dark themes, which smoothly transition over half a second), 2 font options (serif and sans-serif), 3 text widths (thin, default (about 70 characters per line), and wide), and 5 italics display options (italicised, marked with asterisks or slashes, highlighted, or unmarked).</p>
+
+						<p>The reason for the italics control and its many settings is that I sometimes see dyslexic people mention how italics can be much harder to read than regular text, but I figure what people would prefer instead could be any number of things.</p>
+
+						<p>There's also some script near the start and end of the file to store and re-apply settings when you refresh or reopen the file (the data's saved to your browser's local storage when you change a given setting), so it'll eventually reset if you don't open the file for a while).</p>
+
+						<p>To remove a setting, remove the fieldset for the setting and its options from the menu div, then go to the script section at the bottom of the <abbr>HTML</abbr> and remove the matching function (e.g. italicsSwitch for removing the italics control), event listeners, and property's default setting (this is set in the event listener near the end of the file that listens for "<code>DOMContentLoaded</code>", that is, your browser loading the file). You'll probably have trouble adding settings unless you have programming experience, but my game <cite><a href="https://speakthesky.itch.io/like-skyscrapers-v2">Like Skyscrapers Blotting Out The Sun</a></cite>, which I made this template for, has a couple extra controls (text alignment, paragraph division) and a third colour scheme (bookwove) that you can copy over if you think they're relevant to your game text.</p>
+
+						<hr class="subsection-spacer"/>
+
+						<h3 id="tools-tab-explainer">Menu tab: Tools</h3>
+
+						<p>The Tools tab has a simple dice roller (d6 only) and card deck (poker only, no jokers). The file will remember your last 6 rolls as well as the current state of the deck and the last card you drew.</p>
+
+						<p>Like I said, these tools are super-simple&mdash;they don't do anything beyond generate random numbers or shuffle an array of text and pull bits of that text off the array. No fancy graphics, no integration with game oracles or anything like that.</p>
+					</section>
+
+					<hr class="section-spacer"/>
+
+					<section>
+						<h2 id="responsiveness-explainer">Responsiveness</h2>
+
+						<p>The file is set up to display slightly differently below 800 pixels wide and below 500 pixels wide. You can test this on a desktop or laptop computer by shrinking the window, or by opening the file on other devices (e.g. phone, tablet).</p>
+
+						<p>Below 800px, the menu will shift to the bottom of the window, and each menu tab will switch to 2 columns instead of 1.</p>
+
+						<p>Below 500px, the layout will become more compact, with the body text and oracle icons shrinking in size.</p>
+
+						<p>A few other minor changes also happen at each breakpoint.</p>
+
+						<p>The 800px breakpoint styling's meant to cover mobile screens and portrait-oriented tablet screens. The 500px breakpoint styling covers mobile screens. Landscape-oriented tablets may be wide enough for the regular styling.</p>
+
+						<p><strong>Disclaimer</strong>: I don't know that much about responsive design yet, so this stuff can probably be improved on a lot, but it works well enough.</p>
+					</section>
+
+					<hr class="section-spacer"/>
+
+					<section>
+						<h2 id="oracle-grids-explainer">Oracle Grids</h2>
+
+						<p>Rather than use <abbr>HTML</abbr> tables, this file uses <abbr>CSS</abbr> to change description lists into table-like grids. Description lists involve 3 elements:</p>
+
+						<ul>
+							<li><strong><code>&lt;dl&gt;</code></strong>, which wrap around the description list</li>
+							<li><strong><code>&lt;dt&gt;</code></strong>, which wrap around terms to be described</li>
+							<li><strong><code>&lt;dd&gt;</code></strong>, which wrap around descriptions</li>
+						</ul>
+
+						<p>This file adds a fourth: the horizontal rule element <strong><code>&lt;hr/&gt;</code></strong>, which goes between oracle entries as a spacer (I removed the border on these <code>&lt;hr/&gt;</code>s, so the only thing they provide is space, but you could easily add the border back in).</p>
+
+						<p>In this case, the 'terms' are actually card suits and ranks, and the 'descriptions' are actual oracle entries (or parts of oracle entries, since you can have multiple descriptions per term). This file has three different oracle grid types in it:</p>
+
+						<ul>
+							<li><strong>suits-then-ranks</strong>, where the suit gives you a category and the rank gives you details.</li>
+
+							<li><strong>ranks-then-suits</strong>, where the rank gives you a category and the suit gives you details.</li>
+
+							<li><strong>ranks-only</strong>, where the rank gives you the full oracle entry.</li>
+						</ul>
+
+						<p>The first two oracle grid types have two components: the category itself in one <code>&lt;dd&gt;</code> element, then the details in a second <code>&lt;dd&gt;</code> that actually includes a small <code>&lt;dl&gt;</code> of its own. The third oracle grid type is more straightforward; each rank is a <code>&lt;dt&gt;</code> element and each entry is a <code>&lt;dd&gt;</code> element straight after. <strong>If this is getting confusing</strong> then try looking at the <abbr>HTML</abbr> in an editor like <a href="https://www.barebones.com/products/bbedit/">BBEdit</a>. It should make more sense seeing it actually laid out.</p>
+
+						<p>The oracle grids have a bit of dedicated <abbr>CSS</abbr> that let you customise the entries, e.g. adding a 2-component entry to a rank-only oracle (like the entry <q>a mutual revelation</q> in the Event Oracle in <cite>Like Skyscrapers</cite>), or turning an entry in a two-component oracle into a 1-component entry (like the last entry in the Footnote Oracle in <cite>Like Skyscrapers</cite>). You can do this by adding the "<code>one-component-entry</code>" class to a <code>&lt;dt&gt;</code> element in a two-component oracle, or "<code>two-component-entry</code>" to a <code>&lt;dt&gt;</code> element in a one-component oracle. Just use the new number of <code>&lt;dd&gt;</code> elements for that entry and the oracle will lay out exactly as it should. Again, if you need an example, look at the <cite>Like Skyscrapers</cite> oracle entries mentioned above.</p>
+
+						<p>Lastly, all the oracles have id-links built into the main icons for each entry (e.g. the suit icons in a suits-then-ranks oracle grid). This means that if you click that icon, your url will be set to that entry. This relies on having unique ids and matching hrefs for each entry (in the <code>&lt;dt&gt;</code> element for that entry), so if you copy and paste the same oracle grid <em>you must edit the ids and hrefs in the copied oracle grid to make the links work</em>, because <em>ids must be unique in a single <abbr>HTML</abbr> file</em>.</p>
+
+						<hr class="subsection-spacer"/>
+
+						<h3 id="oracle-suits-ranks">Suits-then-ranks</h3>
+
+						<dl class="oracle-grid two-component-oracle oracle-icon-centre">
+							<dt id="oracle-seeds-hearts" class="icon-main suit-red"><a href="#oracle-seeds-hearts">HEARTS</a></dt>
+
+							<dd class="oracle-entry-main">In this oracle, suits provide general categories and ranks provide details:</dd>
+
+							<dd class="oracle-entry-details">
+								<dl class="dicier-list oracle-icon-right">
+									<dt>ACE</dt>
+
+									<dd>here's the specific entry for <span class="dicier">ACE_<span class="suit-red">HEARTS</span></span>, for instance.</dd>
+
+									<dt>TWO</dt>
+
+									<dd>this means there're 4 categories, each with 13 details.</dd>
+
+									<dt>THREE</dt>
+
+									<dd></dd>
+
+									<dt>FOUR</dt>
+
+									<dd></dd>
+
+									<dt>FIVE</dt>
+
+									<dd></dd>
+
+									<dt>SIX</dt>
+
+									<dd></dd>
+
+									<dt>SEVEN</dt>
+
+									<dd></dd>
+
+									<dt>EIGHT</dt>
+
+									<dd></dd>
+
+									<dt>NINE</dt>
+
+									<dd></dd>
+
+									<dt>TEN</dt>
+
+									<dd></dd>
+
+									<dt>JACK</dt>
+
+									<dd></dd>
+
+									<dt>QUEEN</dt>
+
+									<dd></dd>
+
+									<dt>KING</dt>
+
+									<dd></dd>
+								</dl>
+							</dd>
+
+							<hr/>
+
+							<dt id="oracle-seeds-diamonds" class="icon-main suit-red"><a href="#oracle-seeds-diamonds">DIAMONDS</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<dd class="oracle-entry-details">
+								<dl class="dicier-list oracle-icon-right">
+									<dt>ACE</dt>
+
+									<dd></dd>
+
+									<dt>TWO</dt>
+
+									<dd></dd>
+
+									<dt>THREE</dt>
+
+									<dd></dd>
+
+									<dt>FOUR</dt>
+
+									<dd></dd>
+
+									<dt>FIVE</dt>
+
+									<dd></dd>
+
+									<dt>SIX</dt>
+
+									<dd></dd>
+
+									<dt>SEVEN</dt>
+
+									<dd></dd>
+
+									<dt>EIGHT</dt>
+
+									<dd></dd>
+
+									<dt>NINE</dt>
+
+									<dd></dd>
+
+									<dt>TEN</dt>
+
+									<dd></dd>
+
+									<dt>JACK</dt>
+
+									<dd></dd>
+
+									<dt>QUEEN</dt>
+
+									<dd></dd>
+
+									<dt>KING</dt>
+
+									<dd></dd>
+								</dl>
+							</dd>
+
+							<hr/>
+
+							<dt id="oracle-seeds-clubs" class="icon-main suit-black"><a href="#oracle-seeds-clubs">CLUBS</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<dd class="oracle-entry-details">
+								<dl class="dicier-list oracle-icon-right">
+									<dt>ACE</dt>
+
+									<dd></dd>
+
+									<dt>TWO</dt>
+
+									<dd></dd>
+
+									<dt>THREE</dt>
+
+									<dd></dd>
+
+									<dt>FOUR</dt>
+
+									<dd></dd>
+
+									<dt>FIVE</dt>
+
+									<dd></dd>
+
+									<dt>SIX</dt>
+
+									<dd></dd>
+
+									<dt>SEVEN</dt>
+
+									<dd></dd>
+
+									<dt>EIGHT</dt>
+
+									<dd></dd>
+
+									<dt>NINE</dt>
+
+									<dd></dd>
+
+									<dt>TEN</dt>
+
+									<dd></dd>
+
+									<dt>JACK</dt>
+
+									<dd></dd>
+
+									<dt>QUEEN</dt>
+
+									<dd></dd>
+
+									<dt>KING</dt>
+
+									<dd></dd>
+								</dl>
+							</dd>
+
+							<hr/>
+
+							<dt id="oracle-seeds-spades" class="icon-main suit-black"><a href="#oracle-seeds-spades">SPADES</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<dd class="oracle-entry-details">
+								<dl class="dicier-list oracle-icon-right">
+									<dt>ACE</dt>
+
+									<dd></dd>
+
+									<dt>TWO</dt>
+
+									<dd></dd>
+
+									<dt>THREE</dt>
+
+									<dd></dd>
+
+									<dt>FOUR</dt>
+
+									<dd></dd>
+
+									<dt>FIVE</dt>
+
+									<dd></dd>
+
+									<dt>SIX</dt>
+
+									<dd></dd>
+
+									<dt>SEVEN</dt>
+
+									<dd></dd>
+
+									<dt>EIGHT</dt>
+
+									<dd></dd>
+
+									<dt>NINE</dt>
+
+									<dd></dd>
+
+									<dt>TEN</dt>
+
+									<dd></dd>
+
+									<dt>JACK</dt>
+
+									<dd></dd>
+
+									<dt>QUEEN</dt>
+
+									<dd></dd>
+
+									<dt>KING</dt>
+
+									<dd></dd>
+								</dl>
+							</dd>
+						</dl>
+
+						<hr class="subsection-spacer"/>
+
+						<h3 id="oracle-ranks-suits">Ranks-then-suits</h2>
+
+						<dl class="oracle-grid two-component-oracle oracle-icon-right">
+							<dt id="oracle-footnotes-ace" class="icon-main"><a href="#oracle-footnotes-ace">ACE</a></dt>
+
+							<dd class="oracle-entry-main">In this oracle, ranks provide general categories and suits provide details:</dd>
+
+							<dd class="oracle-entry-details">
+								<dl class="dicier-list oracle-icon-centre">
+									<dt class="suit-red">HEARTS</dt>
+
+									<dd>here's the entry for <span class="dicier">ACE_<span class="suit-red">HEARTS</span></span>, for instance.</dd>
+
+									<dt class="suit-red">DIAMONDS</dt>
+
+									<dd>this means there're 13 categories, each with 4 details.</dd>
+
+									<dt class="suit-black">CLUBS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">SPADES</dt>
+
+									<dd></dd>
+								</dl>
+							</dd>
+
+							<hr/>
+
+							<dt id="oracle-footnotes-two" class="icon-main"><a href="#oracle-footnotes-two">TWO</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<dd class="oracle-entry-details">
+								<dl class="dicier-list oracle-icon-centre">
+									<dt class="suit-red">HEARTS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-red">DIAMONDS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">CLUBS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">SPADES</dt>
+
+									<dd></dd>
+								</dl>
+							</dd>
+
+							<hr/>
+
+							<dt id="oracle-footnotes-three" class="icon-main"><a href="#oracle-footnotes-three">THREE</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<dd class="oracle-entry-details">
+								<dl class="dicier-list oracle-icon-centre">
+									<dt class="suit-red">HEARTS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-red">DIAMONDS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">CLUBS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">SPADES</dt>
+
+									<dd></dd>
+								</dl>
+							</dd>
+
+							<hr/>
+
+							<dt id="oracle-footnotes-four" class="icon-main"><a href="#oracle-footnotes-four">FOUR</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<dd class="oracle-entry-details">
+								<dl class="dicier-list oracle-icon-centre">
+									<dt class="suit-red">HEARTS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-red">DIAMONDS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">CLUBS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">SPADES</dt>
+
+									<dd></dd>
+								</dl>
+							</dd>
+
+							<hr/>
+
+							<dt id="oracle-footnotes-five" class="icon-main"><a href="#oracle-footnotes-five">FIVE</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<dd class="oracle-entry-details">
+								<dl class="dicier-list oracle-icon-centre">
+									<dt class="suit-red">HEARTS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-red">DIAMONDS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">CLUBS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">SPADES</dt>
+
+									<dd></dd>
+								</dl>
+							</dd>
+
+							<hr/>
+
+							<dt id="oracle-footnotes-six" class="icon-main"><a href="#oracle-footnotes-six">SIX</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<dd class="oracle-entry-details">
+								<dl class="dicier-list oracle-icon-centre">
+									<dt class="suit-red">HEARTS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-red">DIAMONDS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">CLUBS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">SPADES</dt>
+
+									<dd></dd>
+								</dl>
+							</dd>
+
+							<hr/>
+
+							<dt id="oracle-footnotes-seven" class="icon-main"><a href="#oracle-footnotes-seven">SEVEN</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<dd class="oracle-entry-details">
+								<dl class="dicier-list oracle-icon-centre">
+									<dt class="suit-red">HEARTS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-red">DIAMONDS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">CLUBS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">SPADES</dt>
+
+									<dd></dd>
+								</dl>
+							</dd>
+
+							<hr/>
+
+							<dt id="oracle-footnotes-eight" class="icon-main"><a href="#oracle-footnotes-eight">EIGHT</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<dd class="oracle-entry-details">
+								<dl class="dicier-list oracle-icon-centre">
+									<dt class="suit-red">HEARTS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-red">DIAMONDS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">CLUBS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">SPADES</dt>
+
+									<dd></dd>
+								</dl>
+							</dd>
+
+							<hr/>
+
+							<dt id="oracle-footnotes-nine" class="icon-main"><a href="#oracle-footnotes-nine">NINE</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<dd class="oracle-entry-details">
+								<dl class="dicier-list oracle-icon-centre">
+									<dt class="suit-red">HEARTS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-red">DIAMONDS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">CLUBS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">SPADES</dt>
+
+									<dd></dd>
+								</dl>
+							</dd>
+
+							<hr/>
+
+							<dt id="oracle-footnotes-ten" class="icon-main"><a href="#oracle-footnotes-ten">TEN</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<dd class="oracle-entry-details">
+								<dl class="dicier-list oracle-icon-centre">
+									<dt class="suit-red">HEARTS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-red">DIAMONDS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">CLUBS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">SPADES</dt>
+
+									<dd></dd>
+								</dl>
+							</dd>
+
+							<hr/>
+
+							<dt id="oracle-footnotes-jack" class="icon-main"><a href="#oracle-footnotes-jack">JACK</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<dd class="oracle-entry-details">
+								<dl class="dicier-list oracle-icon-centre">
+									<dt class="suit-red">HEARTS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-red">DIAMONDS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">CLUBS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">SPADES</dt>
+
+									<dd></dd>
+								</dl>
+							</dd>
+
+							<hr/>
+
+							<dt id="oracle-footnotes-queen" class="icon-main"><a href="#oracle-footnotes-queen">QUEEN</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<dd class="oracle-entry-details">
+								<dl class="dicier-list oracle-icon-centre">
+									<dt class="suit-red">HEARTS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-red">DIAMONDS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">CLUBS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">SPADES</dt>
+
+									<dd></dd>
+								</dl>
+							</dd>
+
+							<hr/>
+
+							<dt id="oracle-footnotes-king" class="icon-main"><a href="#oracle-footnotes-king">KING</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<dd class="oracle-entry-details">
+								<dl class="dicier-list oracle-icon-centre">
+									<dt class="suit-red">HEARTS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-red">DIAMONDS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">CLUBS</dt>
+
+									<dd></dd>
+
+									<dt class="suit-black">SPADES</dt>
+
+									<dd></dd>
+								</dl>
+							</dd>
+						</dl>
+
+						<hr class="subsection-spacer"/>
+
+						<h3 id="oracle-ranks-only">Ranks-only</h2>
+
+						<dl class="oracle-grid oracle-icon-right">
+							<dt id="oracle-events-ace" class="icon-main"><a href="#oracle-events-ace">ACE</a></dt>
+
+							<dd class="oracle-entry-main">
+								<p>In this oracle grid, each entry has a rank associated with it, and no other content.</p>
+
+								<p>That makes it pretty good for more complex entries.</p>
+							</dd>
+
+							<hr/>
+
+							<dt id="oracle-events-two" class="icon-main"><a href="#oracle-events-two">TWO</a></dt>
+
+							<dd class="oracle-entry-main">
+								<p>Though I called this a 'ranks-only' oracle grid, you could repeat it once for each suit.</p>
+
+								<p>That'd let you make a full 52-entry oracle where each entry can be its own complex thing rather than just a short bit of text, like the two-component oracles are designed for.</p>
+
+								<p>If you do that, make sure to change the id attribute for each <code>&lt;dt&gt;</code> element and href attribute for the link around the rank inside the <code>&lt;dt&gt;</code> to be unique for each suit-rank combination.</p>
+							</dd>
+
+							<hr/>
+
+							<dt id="oracle-events-three" class="icon-main"><a href="#oracle-events-three">THREE</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<hr/>
+
+							<dt id="oracle-events-four" class="icon-main"><a href="#oracle-events-four">FOUR</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<hr/>
+
+							<dt id="oracle-events-five" class="icon-main"><a href="#oracle-events-five">FIVE</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<hr/>
+
+							<dt id="oracle-events-six" class="icon-main"><a href="#oracle-events-six">SIX</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<hr/>
+
+							<dt id="oracle-events-seven" class="icon-main"><a href="#oracle-events-seven">SEVEN</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<hr/>
+
+							<dt id="oracle-events-eight" class="icon-main"><a href="#oracle-events-eight">EIGHT</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<hr/>
+
+							<dt id="oracle-events-nine" class="icon-main"><a href="#oracle-events-nine">NINE</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<hr/>
+
+							<dt id="oracle-events-ten" class="icon-main"><a href="#oracle-events-ten">TEN</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<hr/>
+
+							<dt id="oracle-events-jack" class="icon-main"><a href="#oracle-events-jack">JACK</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<hr/>
+
+							<dt id="oracle-events-queen" class="icon-main"><a href="#oracle-events-queen">QUEEN</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+
+							<hr/>
+
+							<dt id="oracle-events-king" class="icon-main"><a href="#oracle-events-king">KING</a></dt>
+
+							<dd class="oracle-entry-main"></dd>
+						</dl>
+					</section>
+
+					<hr class="section-spacer"/>
+
+					<section>
+						<h2 id="colophon">Colophon</h2>
+
+						<h3 id="colophon-fonts">Fonts</h3>
+
+						<p>The cover fonts are <a href="https://iginomarini.com/fell/">IM Fell DW Pica</a> v3.0 <abbr title="small caps">SC</abbr> by <a href="https://www.iginomarini.com/">Igino Marini</a> and <a href="https://www.georgduffner.at/ebgaramond/">EB Garamond</a> v0.016 12 Regular by <a href="http://www.georgduffner.at">Georg Mayr-Duffner</a>, both used under the terms of the <a href="https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL"><abbr title="Summer Institute of Linguistics Open Font License">SIL OFL</abbr>-1.1</a>.</p>
+
+						<p>All the other fonts used in this document are taken from your computer, and will vary depending on what your default fonts are. You can see the exact font stacks near the top of the raw <abbr>HTML</abbr> between the <code>&lt;style&gt;</code> tags in the head.</p>
+
+						<p>The icon font (used for dice and card suits and ranks) is <a href="https://speakthesky.itch.io/typeface-dicier">Dicier</a> v1.53 Write Skyscrapers version by <a href="https://speakthesky.com">Speak the Sky</a>, used under the terms of the <a href="https://creativecommons.org/licenses/by/4.0/"><abbr title="Creative Commons Attribution 4.0">CC BY 4.0</abbr> license</a>.</p>
+
+						<p>The combined icon font can be found in base64 form in the raw <abbr>HTML</abbr> of this file (between the <code>&lt;style&gt;</code> tags near the top). You can access the raw code by opening the file in an <abbr title="Integrated Development Environment">IDE</abbr> or a basic text editor, or by viewing the source in a web browser (which may be accessible in your browser by right-clicking the page and selecting an option like “View Page Source”).</p>
+
+						<hr class="subsection-spacer"/>
+
+						<h3 id="colophon-software">Software</h3>
+
+						<p>The <abbr>HTML</abbr> file was written with <a href="https://www.barebones.com/products/bbedit/">BBEdit</a> v14.0.4 (free mode).</p>
+
+						<p>The version of Dicier was made with <a href="https://glyphsapp.com/">Glyphs</a> v3.0.5. The <abbr>SVG</abbr> icons and logo were made with <a href="https://affinity.serif.com/designer/">Affinity Designer</a> v1.10.1 and the cover <abbr>SVG</abbr> was made with a combination of Affinity Designer and <a href="https://inkscape.org/">Inkscape</a> v1.0.2.</p>
+
+						<p>All <abbr>SVG</abbr> images were processed using the <abbr>SVG</abbr> Optimizer web app <a href="https://jakearchibald.github.io/svgomg/"><abbr title="SVGO's Missing GUI">SVGOMG</abbr></a> and the Dicier font file was base64-encoded (allowing it to be written directly into this file) using <a href="https://www.browserling.com/tools/file-to-base64">Browserling</a>’s file-to-base64 tool.</p>
+					</section>
+
+					<hr class="section-spacer"/>
+
+					<footer>
+						<p>Note: the footer may not appear in browsers' Reader Modes. If you're making a plain <abbr>HTML</abbr> file for Reader Modes, switch the <code>&lt;footer&gt;</code> tags for <code>&lt;section&gt;</code> tags in that file.</p>
+
+						<p>template by <a href="https://speakthesky.com">Speak the Sky</a></p>
+
+						<p>contact: <a href="mailto:contact@speakthesky.com">email</a>, <a href="https://twitter.com/speakthesky">twitter</a>, <a href="https://speakthesky.itch.io">itch</a></p>
+
+						<p>
+							<svg class="svg-logo" xmlns="http://www.w3.org/2000/svg" xml:space="preserve">
+								<use href="#StS-logo" />
+							</svg>
+						</p>
+					</footer>
+				</main>
+			</div>
+		</div>
+
+		<script>
+		/* ///////////////////
+			INITIALISATION
+		/////////////////// */
+
+		/* local storage */
+			controlStorage = window.LocalStorage;
+
+		/* dice and deck tool initial messages */
+			newRollMsg = "<p>Roll a die.</p>";
+			newDrawMsg = "<p>Draw a card.</p>";
+
+		/* //////////////
+			FUNCTIONS
+		////////////// */
+
+		/* CONTROLS */
+
+		/* apply 'checked' to selected radio button (also used on content-load to pre-check the correct buttons for the control settings in local storage) */
+			function controlSelector(controlName, value) {
+				var selectedControl = document.getElementById(controlName+'-'+value);
+				selectedControl.checked = true;
+			}
+
+		/* toggle theme */
+			function themeSwitch(value) {
+				var x = document.querySelector("html");
+
+				const themes = ["light", "dark"];
+
+				x.classList.add("theme-"+value);
+
+				for (var i = 0; i < themes.length; i++) {
+					if (value != themes[i]) x.classList.remove("theme-"+themes[i]);
+				}
+
+				controlSelector("theme", value);
+
+				localStorage.setItem("themeControl", value);
+			}
+
+		/* toggle text width */
+			function widthSwitch(value) {
+				var x = document.querySelector(":root");
+
+				if (value == "default") {
+					x.style.setProperty("--main-width", "540px");
+				} else if (value == "thin") {
+					x.style.setProperty("--main-width", "340px");
+				} else if (value == "wide") {
+					x.style.setProperty("--main-width", "740px");
+				}
+
+				controlSelector("width", value);
+
+				localStorage.setItem("widthControl", value);
+			}
+
+		/* switch font type */
+			function fontSwitch(value) {
+				var x = document.querySelector("body");
+
+				if (value == "serif") {
+					x.style.fontFamily = "var(--font-body-serif)";
+					x.style.fontSize = "1em";
+				} else if (value == "sans") {
+					x.style.fontFamily = "var(--font-body-sans)";
+					x.style.fontSize = "0.875em";
+				}
+
+				controlSelector("font", value);
+
+				localStorage.setItem("fontControl", value);
+			}
+
+		/* switch italic styles between different forms */
+			function italicsSwitch(value) {
+				var x = document.querySelectorAll("em, cite");
+
+				const italicTypes = ["italic", "asterisk", "slash", "highlight", "none"];
+
+				for (var i = 0; i < x.length; i++) {
+					for (var j = 0; j < italicTypes.length; j++) x[i].classList.remove("italics-"+italicTypes[j]);
+					x[i].classList.add("italics-"+value);
+				}
+
+				controlSelector("italics", value);
+
+				localStorage.setItem("italicsControl", value);
+			}
+
+		/* TOOLS */
+
+		/* switch menu content */
+			function menuSwitch(value) {
+				const tabs = ["contents", "settings", "tools"];
+
+				for (var i = 0; i < tabs.length; i++) {
+					document.getElementById("menu-"+tabs[i]).classList.remove("visible-menu-tab");
+					document.getElementById("menu-content-"+tabs[i]).checked = false;
+				}
+
+				document.getElementById("menu-"+value).classList.add("visible-menu-tab");
+
+				if (value != "close") controlSelector("menu-content", value);
+			}
+
+		/* reset current dice rolls */
+			function resetDice() {
+				document.getElementById("dice-roll").innerHTML = newRollMsg;
+
+				localStorage.removeItem("lastRolls");
+			}
+
+		/* roll a new die and append to existing dice rolls; remove the oldest result if there are more than 6 results visible */
+			function rollDice() {
+				var x = document.getElementById("dice-roll");
+
+				if (x.innerHTML == newRollMsg) x.innerHTML = "";
+
+				newRoll = Math.ceil(Math.random() * 6);
+
+				newRollText = document.createElement("span");
+				newRollText.classList.add("dicier");
+				newRollText.innerHTML = newRoll;
+
+				if (x.childElementCount > 5) x.removeChild(x.lastChild);
+				x.prepend(newRollText);
+
+				localStorage.setItem("lastRolls", x.innerHTML);
+			}
+
+		/* generate deck of cards in Dicier codes and perform a KFY shuffle on it */
+			function reshuffleDeck() {
+				var ranks = ["ACE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE", "TEN", "JACK", "QUEEN", "KING"],
+				suits = ["HEARTS", "DIAMONDS", "CLUBS", "SPADES"],
+				deck = [];
+
+				for (var i = 0; i < ranks.length; i++) {
+					for (var j = 0; j < suits.length; j++) {
+						card = {rank: ranks[i], suit: suits[j]};
+						deck.push(card);
+					}
+				}
+
+				var n = deck.length,
+				temp,
+				i;
+				while (n > 0) {
+					i = Math.floor(Math.random() * n--);
+
+					temp = deck[n];
+					deck[n] = deck[i];
+					deck[i] = temp;
+				}
+
+				localStorage.removeItem("lastResult");
+				localStorage.removeItem("deck");
+
+				document.getElementById("new-card").innerHTML = newDrawMsg;
+
+				return deck;
+			}
+
+		/* retrieve a card from the deck and apply dicier and suit-colour styles accordingly */
+			function getCard() {
+				if (deck.length > 0) {
+					card = deck.pop();
+
+					if (card.suit == "HEARTS" || card.suit == "DIAMONDS") card.colour = "red";
+					else card.colour = "black";
+
+					result = '<span class="dicier">'+card.rank+'_<span class="suit-'+card.colour+'">'+card.suit+'</span></span>';
+				} else result = "<p>Deck is empty.</p>";
+
+				document.getElementById("new-card").innerHTML = result;
+
+				localStorage.setItem("lastResult", result);
+				localStorage.setItem("deck", JSON.stringify(deck));
+			}
+
+		/* //////////////
+			SCRIPTING
+		////////////// */
+
+		/* control menu content */
+			var rmenuAll = document.querySelectorAll('input[name="menu-control"]');
+			rmenuAll.forEach(rmenu => rmenu.addEventListener("change", () => menuSwitch(rmenu.value)));
+
+		/* control theme */
+			var rThemeAll = document.querySelectorAll('input[name="theme-control"]');
+			rThemeAll.forEach(rTheme => rTheme.addEventListener("change", () => themeSwitch(rTheme.value)));
+
+		/* control width */
+			var rWidthAll = document.querySelectorAll('input[name="width-control"]');
+			rWidthAll.forEach(rWidth => rWidth.addEventListener("change", () => widthSwitch(rWidth.value)));
+
+		/* control font type */
+			var rFontAll = document.querySelectorAll('input[name="font-control"]');
+			rFontAll.forEach(rFont => rFont.addEventListener("change", () => fontSwitch(rFont.value)));
+
+		/* control italics form */
+			var rItalicsAll = document.querySelectorAll('input[name="italics-control"]');
+			rItalicsAll.forEach(rItalics => rItalics.addEventListener("change", () => italicsSwitch(rItalics.value)));
+
+		/* roll dice */
+			var diceRollButton = document.getElementById("dice-roll-button");
+			diceRollButton.addEventListener("mousedown", () => rollDice());
+
+		/* reset dice */
+			var diceResetButton = document.getElementById("dice-reset-button");
+			diceResetButton.addEventListener("mousedown", () => resetDice());
+
+		/* draw card */
+			var cardDrawButton = document.getElementById("card-draw-button");
+			cardDrawButton.addEventListener("mousedown", () => getCard());
+
+		/* reshuffle deck */
+			var reshuffleButton = document.getElementById("reshuffle-button");
+			reshuffleButton.addEventListener("mousedown", () => deck = reshuffleDeck());
+
+		/* implement saved settings, dice, and deck on document reload (else implement default settings) */
+			document.addEventListener("DOMContentLoaded", function() {
+				themeSwitch(localStorage.getItem("themeControl") ?? "light");
+				widthSwitch(localStorage.getItem("widthControl") ?? "default");
+				fontSwitch(localStorage.getItem("fontControl") ?? "sans");
+				italicsSwitch(localStorage.getItem("italicsControl") ?? "italic");
+
+				menuSwitch("close");
+
+				document.getElementById("dice-roll").innerHTML = localStorage.getItem("lastRolls") ?? newRollMsg;
+				document.getElementById("new-card").innerHTML = localStorage.getItem("lastResult") ?? newDrawMsg;
+				deck = JSON.parse(localStorage.getItem("deck")) ?? reshuffleDeck();
+			});
+		</script>
+	</body>
+</html>
