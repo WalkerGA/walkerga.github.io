@@ -100,7 +100,7 @@ aux_links:
 aux_links_new_tab: false
 ```
 
-## Navigation sidebar
+## Navigation 
 
 ```yaml
 # Enable or disable the side/mobile menu globally
