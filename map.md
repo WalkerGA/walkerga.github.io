@@ -1,5 +1,6 @@
 ---
-title: Map
+title: map
+layout: home
 nav_order: 2
 ---
 
