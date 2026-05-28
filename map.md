@@ -4,4 +4,4 @@ layout: home
 nav_order: 2
 ---
 
-map
+![map](img/HexWorldv1.png)
