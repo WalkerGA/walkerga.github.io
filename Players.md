@@ -6,11 +6,11 @@ nav_order: 3
 
 # Player Characters
 
-+ ---------+-------------+
-| Ella     | Hieronymous |
-| James    | Vitto       |
-| Kelsey   | Honey-Dew   |
-| Meredith | Calypso     |
-| Warren   | Banjo       |
-| Zoey     | Honey-Mae   |
-+------------------------+
++ ---------+-------------+ <br>
+| Ella     | Hieronymous | <br>
+| James    | Vitto       | <br>
+| Kelsey   | Honey-Dew   | <br>
+| Meredith | Calypso     | <br>
+| Warren   | Banjo       | <br>
+| Zoey     | Honey-Mae   | <br>
++------------------------+ <br>
