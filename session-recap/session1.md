@@ -8,9 +8,9 @@ layout: home
 
 - Vitto + Hieronymous took the injured dryad, Fenny back to Old Swampy to rest from his injuries
 - The party heard the witch offering to fr Nymia if they can acquire three things
-> - *** A thorn the size of a dagger ***
-> - *** A Zebra Bat, alive ***
-> - *** Fungal Pearl ***
+> - ***A thorn the size of a dagger***
+> - ***A Zebra Bat, alive***
+> - ***Fungal Pearl***
 
 - Arriving at the hollow head statue, the party encounters three adventurers arguing.
 
@@ -30,6 +30,6 @@ layout: home
     - Vitto loses his dagger 
     - Hieronymous breaks his staff
     - Honey-Dew and Honey-Mae pelt the plant with bolts and arrows - eventually killing it
-    - The Fungal Leader, *** Karakota the Brave *** , assists in the battle and asks for assistance in finding Dalia and removing the monks from the cave
+    - The Fungal Leader, ***Karakota the Brave*** , assists in the battle and asks for assistance in finding Dalia and removing the monks from the cave
     - Banjo convinces Karakota that by helping with both, Karakota will be in their debt
     - The party travels down a room covered in Vines, where Hieronymous unsuccessfully stab a vine, angering it.
