@@ -22,7 +22,7 @@ layout: home
 <br>
 
 - Using a rope, the party descend
-- Room 1: Giant skull with a serpent housed inside, Honey-Mae trades two of Hieronymous's pockets for the *** Magic Glue *** its holding
+- Room 1: Giant skull with a serpent housed inside, Honey-Mae trades two of Hieronymous's pockets for the ***Magic Glue*** its holding
 - Fungal Cave: 
     - Tricked by golden limes, get into a fight with a carnivorous plant
     - Banjo becomes mutated and develops gills
