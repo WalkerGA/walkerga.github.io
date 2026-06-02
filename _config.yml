@@ -1,15 +1,11 @@
 title: WACK 
-description: A starter template for a Jeykll site using the Just the Docs theme!
+description: 
 theme: just-the-docs
 
 url: https://walkerga.github.io
 
-aux_links:
-  Template Repository: https://github.com/just-the-docs/just-the-docs-template
-
 aux_links_new_tab: false
 
-nav_enabled: true
 
 color_scheme: dark
 
@@ -17,7 +13,7 @@ color_scheme: dark
 
 # Enable or disable the site search
 # Supports true (default) or false
-search_enabled: true
+search_enabled: false
 
 search:
   # Split pages into sections that can be searched individually
