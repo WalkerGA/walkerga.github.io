@@ -1,5 +1,5 @@
 ---
-title: 05 / 05
+title: Session Recap
 layout: home
 ---
 
